@@ -47,8 +47,9 @@ Working dir is a subdir of $HOME:
 
 This is useless to me:
 
-- Notice that when in dir `four`, the path is not truncated at all.
-- The tilde `~` is never truncated
+- Notice that when in dir `four`, the path is not truncated at all
+  `~/one/two/three/four $`
+- The tilde `~` is never truncated `~/.../three/four/five $`
 
 Working dir is not a subdir of $HOME:
 
@@ -94,12 +95,6 @@ to achieve this task. This function must be as fast as possible and forking off
 
 After some research on bash/zsh arrays, some head-banging and quite a bit of
 coffee, I managed to achieve the desired result:
-
-``` sh
-~ $ cd one/two/three/four/repository/
-⋯/three/four/repository $ cd /usr/local/Cellar/git/
-⋯/local/Cellar/git $
-```
 
 In a subdir of $HOME:
 
