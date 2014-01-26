@@ -4,7 +4,7 @@
   <title><![CDATA[Category: shell | My Blog]]></title>
   <link href="http://edkolev.github.io/blog/categories/shell/atom.xml" rel="self"/>
   <link href="http://edkolev.github.io/"/>
-  <updated>2014-01-26T19:14:58+02:00</updated>
+  <updated>2014-01-26T19:22:17+02:00</updated>
   <id>http://edkolev.github.io/</id>
   <author>
     <name><![CDATA[Evgeni Kolev]]></name>
@@ -20,7 +20,7 @@
     <id>http://edkolev.github.io/blog/2014/01/26/prompt-shorten-working-directory</id>
     <content type="html"><![CDATA[<h2>TL;DR</h2>
 
-<p>Shorten <code>~/very/deep/down/the/rabbit/hole</code> to <code>⋯/the/rabbit/hole</code> in
+<p>How to shorten <code>~/very/deep/down/the/rabbit/hole</code> to <code>⋯/the/rabbit/hole</code> in
 prompt.</p>
 
 <!-- more -->
@@ -40,7 +40,7 @@ group which sticks with whatever their system&rsquo;s default is.</p>
 <p>The working directory should be readable no matter how
 <code>~/very/deep/down/the/rabbit/hole</code> you&rsquo;re in in the file system. To maintain
 readability, the working dir displayed in the prompt should contain no more
-than three sub directories <code>⋯/the/rabbit/hole</code></p>
+than three sub directories, like so <code>⋯/the/rabbit/hole</code></p>
 
 <p>Bash version 4+ actually has an option to do this <code>PROMPT_DIRTRIM=3</code>, but I
 find it&rsquo;s behaviour ludicrous: it behaves (very) differently when the working
@@ -157,16 +157,15 @@ symbols for my <a href="https://github.com/edkolev/promptline.vim">promptline.vi
 
 <p>``` sh
 function truncated_cwd {
-  # dir_limit and truncation can be configured
+  # dir_limit, truncation and dir_sep can be configured
   local dir_limit=&ldquo;3&rdquo;
-  local truncation=&ldquo;⋯&rdquo;</p>
+  local truncation=&ldquo;⋯&rdquo;
+  local dir_sep=&ldquo;/&rdquo;</p>
 
 <p>  local first_char
   local part_count=0
   local formatted_cwd=&ldquo;&rdquo;
-  local dir_sep=&ldquo; | &rdquo;</p>
-
-<p>  local cwd=&ldquo;${PWD/#$HOME/~}&rdquo;</p>
+  local cwd=&ldquo;${PWD/#$HOME/~}&rdquo;</p>
 
 <p>  # get first char of the path, i.e. tilde or slash
   [[ -n ${ZSH_VERSION-} ]] &amp;&amp; first_char=$cwd[1,1] || first_char=${cwd::1}</p>

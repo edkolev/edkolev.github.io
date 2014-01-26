@@ -4,7 +4,7 @@
   <title><![CDATA[My Blog]]></title>
   <link href="http://edkolev.github.io/atom.xml" rel="self"/>
   <link href="http://edkolev.github.io/"/>
-  <updated>2014-01-26T19:14:58+02:00</updated>
+  <updated>2014-01-26T19:22:17+02:00</updated>
   <id>http://edkolev.github.io/</id>
   <author>
     <name><![CDATA[Evgeni Kolev]]></name>
@@ -20,7 +20,7 @@
     <id>http://edkolev.github.io/blog/2014/01/26/prompt-shorten-working-directory</id>
     <content type="html"><![CDATA[<h2>TL;DR</h2>
 
-<p>Shorten <code>~/very/deep/down/the/rabbit/hole</code> to <code>⋯/the/rabbit/hole</code> in
+<p>How to shorten <code>~/very/deep/down/the/rabbit/hole</code> to <code>⋯/the/rabbit/hole</code> in
 prompt.</p>
 
 <!-- more -->
@@ -40,7 +40,7 @@ group which sticks with whatever their system&rsquo;s default is.</p>
 <p>The working directory should be readable no matter how
 <code>~/very/deep/down/the/rabbit/hole</code> you&rsquo;re in in the file system. To maintain
 readability, the working dir displayed in the prompt should contain no more
-than three sub directories <code>⋯/the/rabbit/hole</code></p>
+than three sub directories, like so <code>⋯/the/rabbit/hole</code></p>
 
 <p>Bash version 4+ actually has an option to do this <code>PROMPT_DIRTRIM=3</code>, but I
 find it&rsquo;s behaviour ludicrous: it behaves (very) differently when the working
@@ -217,17 +217,15 @@ symbols for my <a href="https://github.com/edkolev/promptline.vim">promptline.vi
 <span class='line-number'>29</span>
 <span class='line-number'>30</span>
 <span class='line-number'>31</span>
-<span class='line-number'>32</span>
 </pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="k">function </span>truncated_cwd <span class="o">{</span>
-</span><span class='line'>  <span class="c"># dir_limit and truncation can be configured</span>
+</span><span class='line'>  <span class="c"># dir_limit, truncation and dir_sep can be configured</span>
 </span><span class='line'>  <span class="nb">local </span><span class="nv">dir_limit</span><span class="o">=</span><span class="s2">&quot;3&quot;</span>
 </span><span class='line'>  <span class="nb">local </span><span class="nv">truncation</span><span class="o">=</span><span class="s2">&quot;⋯&quot;</span>
+</span><span class='line'>  <span class="nb">local </span><span class="nv">dir_sep</span><span class="o">=</span><span class="s2">&quot;/&quot;</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="nb">local </span>first_char
 </span><span class='line'>  <span class="nb">local </span><span class="nv">part_count</span><span class="o">=</span>0
 </span><span class='line'>  <span class="nb">local </span><span class="nv">formatted_cwd</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-</span><span class='line'>  <span class="nb">local </span><span class="nv">dir_sep</span><span class="o">=</span><span class="s2">&quot; | &quot;</span>
-</span><span class='line'>
 </span><span class='line'>  <span class="nb">local </span><span class="nv">cwd</span><span class="o">=</span><span class="s2">&quot;${PWD/#$HOME/~}&quot;</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="c"># get first char of the path, i.e. tilde or slash</span>
