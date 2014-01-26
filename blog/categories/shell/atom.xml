@@ -4,7 +4,7 @@
   <title><![CDATA[Category: shell | My Blog]]></title>
   <link href="http://edkolev.github.io/blog/categories/shell/atom.xml" rel="self"/>
   <link href="http://edkolev.github.io/"/>
-  <updated>2014-01-26T18:04:23+02:00</updated>
+  <updated>2014-01-26T19:14:58+02:00</updated>
   <id>http://edkolev.github.io/</id>
   <author>
     <name><![CDATA[Evgeni Kolev]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[prompt working directory]]></title>
-    <link href="http://edkolev.github.io/blog/2014/01/26/bash-directory-truncation/"/>
+    <title type="html"><![CDATA[prompt shorten working directory]]></title>
+    <link href="http://edkolev.github.io/blog/2014/01/26/prompt-shorten-working-directory/"/>
     <updated>2014-01-26T12:03:54+02:00</updated>
-    <id>http://edkolev.github.io/blog/2014/01/26/bash-directory-truncation</id>
+    <id>http://edkolev.github.io/blog/2014/01/26/prompt-shorten-working-directory</id>
     <content type="html"><![CDATA[<h2>TL;DR</h2>
 
 <p>Shorten <code>~/very/deep/down/the/rabbit/hole</code> to <code>⋯/the/rabbit/hole</code> in
@@ -27,13 +27,13 @@ prompt.</p>
 
 
 <p>If you&rsquo;re staring at a shell prompt a few hours every day, you might as well
-try to modify the prompt to better suit your needs.  Some people like a
-minimalistic prompt with nothing but the working dir and a dollar sight <code>~ $</code>.
-Others get an enormous 256-color multi-line beast holding information about the
-kernel version, battery status, daily horoscope and what not. There&rsquo;s yet
-another group which sticks with whatever their system&rsquo;s default is.</p>
+modify the prompt to better suit your needs.  Some people like a minimalistic
+prompt with nothing but the working dir and a dollar sight <code>~ $</code>.  Others get
+an enormous 256-color multi-line beast holding information about the kernel
+version, battery status, daily horoscope and what not. There&rsquo;s yet another
+group which sticks with whatever their system&rsquo;s default is.</p>
 
-<p>This post will hopefully come in handy for the first and second group.</p>
+<p>This post will hopefully come in handy for the first and second groups.</p>
 
 <h2>The Goal</h2>
 
