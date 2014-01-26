@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Evgeni Kolev Blog - prompt working directory</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../">Home</a>
+            </div>
+            <div id="navigation">
+                <a href="../about.html">About</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>prompt working directory</h1>
+            <div class="info">
+    January 26, 2014
+    
+</div>
+
+<h2 id="tldr">TL;DR</h2>
+<p>Shorten <code>~/very/deep/down/the/rabbit/hole</code> to <code>⋯/the/rabbit/hole</code> in prompt.</p>
+<!-- more -->
+<p>If you’re staring at a shell prompt a few hours every day, you might as well try to modify the prompt to better suit your needs. Some people like a minimalistic prompt with nothing but the working dir and a dollar sign <code>~ $</code>. Others get an enormous 256-color multi-line beast holding information about the kernel version, battery status, daily horoscope and what not. There’s yet another group which sticks with whatever their system’s default is.</p>
+<p>This post will hopefully come in handy for the first and second group.</p>
+<h2 id="the-goal">The Goal</h2>
+<p>The working directory should be readable no matter how <code>~/very/deep/down/the/rabbit/hole</code> you’re in in the file system. To maintain readability, the working dir displayed in the prompt should contain no more than three sub directories <code>⋯/the/rabbit/hole</code></p>
+<p>Bash version 4+ actually has an option to do this <code>PROMPT_DIRTRIM=3</code>, but I find it’s behaviour ludicrous: it behaves (very) differently when the working dir is a sub dir of $HOME or not.</p>
+<p>Working dir is a subdir of $HOME:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~</span> $ <span class="va">PROMPT_DIRTRIM=</span>3
+<span class="ex">~</span> $ <span class="bu">cd</span> one/
+<span class="ex">~/one</span> $ cd two/
+<span class="ex">~/one/two</span> $ cd three/
+<span class="ex">~/one/two/three</span> $ cd four/
+<span class="ex">~/one/two/three/four</span> $ cd five/
+<span class="ex">~/.../three/four/five</span> $</code></pre></div>
+<p>This is useless to me:</p>
+<ul>
+<li>Notice that when in dir <code>four</code>, the path is not truncated at all <code>~/one/two/three/four $</code></li>
+<li>The tilde <code>~</code> is never truncated <code>~/.../three/four/five $</code></li>
+</ul>
+<p>Working dir is not a subdir of $HOME:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~</span> $ <span class="va">PROMPT_DIRTRIM=</span>3
+<span class="ex">/</span> $ cd one/
+<span class="ex">/one</span> $ cd two/
+<span class="ex">/one/two</span> $ cd three/
+<span class="ex">/one/two/three</span> $ cd four/
+<span class="ex">.../two/three/four</span> $ cd five/
+<span class="ex">.../three/four/five</span> $</code></pre></div>
+<p>This is much better! … or not:</p>
+<ul>
+<li>Most of the time I’m somewhere in $HOME</li>
+<li>I would really like to use a single char <code>⋯</code> instead of three dots <code>...</code>. Screen real-estate does not come that cheap. I work with many vim/tmux panes, so cutting some fat here and there does make a difference.</li>
+</ul>
+<p>Also, I’ve been wanting to improve my shell scripting skills for some time. This seemed like a nice challenge.</p>
+<h2 id="truncate-function">Truncate function</h2>
+<p>In theory, truncating the $PWD to 3 dirs seemed like a very simple task. In practice, it turned out a (tiny) bit more complicated. In javascript (a language I’m mostly unfamiliar with), this could be achieved with pretty much one line of code:</p>
+<p>(Note that this is greatly simplified and doesn’t handle any corner cases.)</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="va">PWD</span>.<span class="at">split</span>(<span class="st">'/'</span>).<span class="at">slice</span>(<span class="op">-</span><span class="dv">3</span>).<span class="at">join</span>(<span class="st">'/'</span>)</code></pre></div>
+<p>How hard could it be to port this to bash (and zsh)?</p>
+<p>One thing I want to stress is that external processes must <strong>not</strong> be created to achieve this task. This function must be as fast as possible and forking off <code>sed</code>, <code>awd</code> and what not, is not a viable option.</p>
+<h2 id="the-result">The result</h2>
+<p>After some research on bash/zsh arrays, some head-banging and quite a bit of coffee, I managed to achieve the desired result:</p>
+<p>In a subdir of $HOME:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~</span> $ <span class="bu">cd</span> one/
+<span class="ex">~/one</span> $ cd two/
+<span class="ex">~/one/two</span> $ cd three/
+⋯<span class="ex">/one/two/three</span> $ cd four/
+⋯<span class="ex">/two/three/four</span> $ cd five/</code></pre></div>
+<p>Not in $HOME:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">/</span> $ cd one/
+<span class="ex">/one</span> $ cd two/
+<span class="ex">/one/two</span> $ cd three/
+⋯<span class="ex">/one/two/three</span> $ cd four/
+⋯<span class="ex">/two/three/four</span> $ cd five/</code></pre></div>
+<p>As a bonus, the separator can be configured, for example it could be <code>&gt;</code></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~</span> $ <span class="bu">cd</span> one/
+<span class="ex">~</span> <span class="op">&gt;</span> <span class="ex">one</span> $ cd two/
+<span class="ex">~</span> <span class="op">&gt;</span> <span class="ex">one</span> <span class="op">&gt;</span> two $ cd three/
+⋯ <span class="op">&gt;</span> <span class="ex">one</span> <span class="op">&gt;</span> two <span class="op">&gt;</span> three $ cd four/
+⋯ <span class="op">&gt;</span> <span class="ex">two</span> <span class="op">&gt;</span> three <span class="op">&gt;</span> four $ cd five/</code></pre></div>
+<p>Plus, with some minor modifications, I got the function working with powerline symbols for my <a href="https://github.com/edkolev/promptline.vim">promptline.vim</a> plugin:</p>
+<p>{% img /images/promptline_cwd.png %}</p>
+<h2 id="the-function-itself">The function itself</h2>
+<p>Hopefully it would be useful to someone else. I certainly learned a lot writing (and re-writing) it. Enjoy!</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">function</span><span class="fu"> truncated_cwd</span> <span class="kw">{</span>
+  <span class="co"># dir_limit and truncation can be configured</span>
+  <span class="bu">local</span> <span class="va">dir_limit=</span><span class="st">&quot;3&quot;</span>
+  <span class="bu">local</span> <span class="va">truncation=</span><span class="st">&quot;⋯&quot;</span>
+
+  <span class="bu">local</span> <span class="va">first_char</span>
+  <span class="bu">local</span> <span class="va">part_count=</span>0
+  <span class="bu">local</span> <span class="va">formatted_cwd=</span><span class="st">&quot;&quot;</span>
+  <span class="bu">local</span> <span class="va">dir_sep=</span><span class="st">&quot; | &quot;</span>
+
+  <span class="bu">local</span> <span class="va">cwd=</span><span class="st">&quot;</span><span class="va">${PWD/</span>#<span class="va">$HOME/</span>~<span class="va">}</span><span class="st">&quot;</span>
+
+  <span class="co"># get first char of the path, i.e. tilde or slash</span>
+  [[ <span class="ex">-n</span> <span class="va">${ZSH_VERSION-}</span> ]] <span class="kw">&amp;&amp;</span> <span class="va">first_char=$cwd[1,1]</span> <span class="kw">||</span> <span class="va">first_char=${cwd::1}</span>
+
+  <span class="co"># remove leading tilde</span>
+  <span class="va">cwd=</span><span class="st">&quot;</span><span class="va">${cwd#</span>\~<span class="va">}</span><span class="st">&quot;</span>
+
+  <span class="kw">while [[</span> <span class="st">&quot;</span><span class="va">$cwd</span><span class="st">&quot;</span> <span class="ot">==</span> */* &amp;&amp; <span class="st">&quot;</span><span class="va">$cwd</span><span class="st">&quot;</span> <span class="ot">!=</span> <span class="st">&quot;/&quot;</span><span class="kw"> ]]</span>; <span class="kw">do</span>
+    <span class="co"># pop off last part of cwd</span>
+    <span class="bu">local</span> <span class="va">part=</span><span class="st">&quot;</span><span class="va">${cwd##</span>*/<span class="va">}</span><span class="st">&quot;</span>
+    <span class="va">cwd=</span><span class="st">&quot;</span><span class="va">${cwd%</span>/*<span class="va">}</span><span class="st">&quot;</span>
+
+    <span class="va">formatted_cwd=</span><span class="st">&quot;</span><span class="va">$dir_sep$part$formatted_cwd</span><span class="st">&quot;</span>
+    <span class="va">part_count=$((</span>part_count+1<span class="va">))</span>
+
+    [[ <span class="va">$part_count</span> <span class="ex">-eq</span> <span class="va">$dir_limit</span> ]] <span class="kw">&amp;&amp;</span> <span class="va">first_char=</span><span class="st">&quot;</span><span class="va">$truncation</span><span class="st">&quot;</span> <span class="kw">&amp;&amp;</span> <span class="bu">break</span>
+  <span class="kw">done</span>
+
+  [[ <span class="st">&quot;</span><span class="va">$formatted_cwd</span><span class="st">&quot;</span> != <span class="va">$first_char</span><span class="ex">*</span> ]] <span class="kw">&amp;&amp;</span> <span class="va">formatted_cwd=</span><span class="st">&quot;</span><span class="va">$first_char$formatted_cwd</span><span class="st">&quot;</span>
+  <span class="bu">printf</span> <span class="st">&quot;%s&quot;</span> <span class="st">&quot;</span><span class="va">$formatted_cwd</span><span class="st">&quot;</span>
+<span class="kw">}</span></code></pre></div>
+<p>There are a few ways to get the function in the prompt, this is probably the simplest one:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="va">PS1=</span><span class="st">'$(truncated_cwd) \$ '</span></code></pre></div>
+
+        </div>
+
+        <div id="footer">
+            Evgeni Kolev. Generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+</html>
