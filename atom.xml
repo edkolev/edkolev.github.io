@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Blog]]></title>
+  <link href="http://edkolev.github.io/atom.xml" rel="self"/>
+  <link href="http://edkolev.github.io/"/>
+  <updated>2014-01-26T17:48:41+02:00</updated>
+  <id>http://edkolev.github.io/</id>
+  <author>
+    <name><![CDATA[Evgeni Kolev]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[prompt working directory]]></title>
+    <link href="http://edkolev.github.io/blog/2014/01/26/bash-directory-truncation/"/>
+    <updated>2014-01-26T12:03:54+02:00</updated>
+    <id>http://edkolev.github.io/blog/2014/01/26/bash-directory-truncation</id>
+    <content type="html"><![CDATA[<h2>TL;DR</h2>
+
+<p>Shorten <code>~/very/deep/down/the/rabbit/hole</code> to <code>⋯/the/rabbit/hole</code> in
+prompt.</p>
+
+<!-- more -->
+
+
+<p>If you&rsquo;re staring at a shell prompt a few hours every day, you might as well
+try to modify the prompt to better suit your needs.  Some people like a
+minimalistic prompt with nothing but the working dir and a dollar sight <code>~ $</code>.
+Others get an enormous 256-color multi-line beast holding information about the
+kernel version, battery status, daily horoscope and what not. There&rsquo;s yet
+another group which sticks with whatever their system&rsquo;s default is.</p>
+
+<p>This post will hopefully come in handy for the first and second group.</p>
+
+<h2>The Goal</h2>
+
+<p>The working directory should be readable no matter how
+<code>~/very/deep/down/the/rabbit/hole</code> you&rsquo;re in in the file system. To maintain
+readability, the working dir displayed in the prompt should contain no more
+than three sub directories <code>⋯/the/rabbit/hole</code></p>
+
+<p>Bash version 4+ actually has an option to do this <code>PROMPT_DIRTRIM=3</code>, but I
+find it&rsquo;s behaviour ludicrous: it behaves (very) differently when the working
+dir is a sub dir of $HOME or not.</p>
+
+<p>Working dir is a subdir of $HOME:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>~ <span class="nv">$ PROMPT_DIRTRIM</span><span class="o">=</span>3
+</span><span class='line'>~ <span class="nv">$ </span><span class="nb">cd </span>one/
+</span><span class='line'>~/one <span class="nv">$ </span><span class="nb">cd </span>two/
+</span><span class='line'>~/one/two <span class="nv">$ </span><span class="nb">cd </span>three/
+</span><span class='line'>~/one/two/three <span class="nv">$ </span><span class="nb">cd </span>four/
+</span><span class='line'>~/one/two/three/four <span class="nv">$ </span><span class="nb">cd </span>five/
+</span><span class='line'>~/.../three/four/five <span class="err">$</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is useless to me:</p>
+
+<ul>
+<li>Notice that when in dir <code>four</code>, the path is not truncated at all.</li>
+<li>The tilde <code>~</code> is never truncated</li>
+</ul>
+
+
+<p>Working dir is not a subdir of $HOME:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>~ <span class="nv">$ PROMPT_DIRTRIM</span><span class="o">=</span>3
+</span><span class='line'>/ <span class="nv">$ </span><span class="nb">cd </span>one/
+</span><span class='line'>/one <span class="nv">$ </span><span class="nb">cd </span>two/
+</span><span class='line'>/one/two <span class="nv">$ </span><span class="nb">cd </span>three/
+</span><span class='line'>/one/two/three <span class="nv">$ </span><span class="nb">cd </span>four/
+</span><span class='line'>.../two/three/four <span class="nv">$ </span><span class="nb">cd </span>five/
+</span><span class='line'>.../three/four/five <span class="err">$</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is much better! &hellip; or not:</p>
+
+<ul>
+<li>Most of the time I&rsquo;m somewhere in $HOME</li>
+<li>I would really like to use a single char <code>⋯</code> instead of three dots <code>...</code>.
+Screen real-estate does not come that cheap. I work with many vim/tmux panes,
+so cutting some fat here and there does make a difference.</li>
+</ul>
+
+
+<p>Also, I&rsquo;ve been wanting to improve my shell scripting skills for some time.
+This seemed like a nice challenge.</p>
+
+<h2>Truncate function</h2>
+
+<p>In theory, truncating the $PWD to 3 dirs seemed like a very simple task. In
+practice, it turned out a (tiny) bit more complicated. In javascript (a
+language I&rsquo;m mostly unfamiliar with), this could be achieved with pretty much
+one line of code:</p>
+
+<p>(Note that this is greatly simplified and doesn&rsquo;t handle any corner cases.)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">PWD</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>How hard could it be to port this to bash (and zsh)?</p>
+
+<p>One thing I want to stress is that external processes must <strong>not</strong> be created
+to achieve this task. This function must be as fast as possible and forking off
+<code>sed</code>, <code>awd</code> and what not, is not a viable option.</p>
+
+<h2>The result</h2>
+
+<p>After some research on bash/zsh arrays, some head-banging and quite a bit of
+coffee, I managed to achieve the desired result:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>~ <span class="nv">$ </span><span class="nb">cd </span>one/two/three/four/repository/
+</span><span class='line'>⋯/three/four/repository <span class="nv">$ </span><span class="nb">cd</span> /usr/local/Cellar/git/
+</span><span class='line'>⋯/local/Cellar/git <span class="err">$</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In a subdir of $HOME:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>~ <span class="nv">$ </span><span class="nb">cd </span>one/
+</span><span class='line'>~/one <span class="nv">$ </span><span class="nb">cd </span>two/
+</span><span class='line'>~/one/two <span class="nv">$ </span><span class="nb">cd </span>three/
+</span><span class='line'>⋯/one/two/three <span class="nv">$ </span><span class="nb">cd </span>four/
+</span><span class='line'>⋯/two/three/four <span class="nv">$ </span><span class="nb">cd </span>five/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Not in $HOME:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>/ <span class="nv">$ </span><span class="nb">cd </span>one/
+</span><span class='line'>/one <span class="nv">$ </span><span class="nb">cd </span>two/
+</span><span class='line'>/one/two <span class="nv">$ </span><span class="nb">cd </span>three/
+</span><span class='line'>⋯/one/two/three <span class="nv">$ </span><span class="nb">cd </span>four/
+</span><span class='line'>⋯/two/three/four <span class="nv">$ </span><span class="nb">cd </span>five/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As a bonus, the separator can be configured, for example it could be <code>&gt;</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>~ <span class="nv">$ </span><span class="nb">cd </span>one/
+</span><span class='line'>~ &gt; one <span class="nv">$ </span><span class="nb">cd </span>two/
+</span><span class='line'>~ &gt; one &gt; two <span class="nv">$ </span><span class="nb">cd </span>three/
+</span><span class='line'>⋯ &gt; one &gt; two &gt; three <span class="nv">$ </span><span class="nb">cd </span>four/
+</span><span class='line'>⋯ &gt; two &gt; three &gt; four <span class="nv">$ </span><span class="nb">cd </span>five/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Plus, with some minor modifications, I got the function working with powerline
+symbols for my <a href="https://github.com/edkolev/promptline.vim">promptline.vim</a> plugin:</p>
+
+<p><img src="http://edkolev.github.io/images/promptline_cwd.png"></p>
+
+<h2>The function itself</h2>
+
+<p>Hopefully it would be useful to someone else. I certainly learned a lot writing
+(and re-writing) it. Enjoy!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="k">function </span>truncated_cwd <span class="o">{</span>
+</span><span class='line'>  <span class="c"># dir_limit and truncation can be configured</span>
+</span><span class='line'>  <span class="nb">local </span><span class="nv">dir_limit</span><span class="o">=</span><span class="s2">&quot;3&quot;</span>
+</span><span class='line'>  <span class="nb">local </span><span class="nv">truncation</span><span class="o">=</span><span class="s2">&quot;⋯&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">local </span>first_char
+</span><span class='line'>  <span class="nb">local </span><span class="nv">part_count</span><span class="o">=</span>0
+</span><span class='line'>  <span class="nb">local </span><span class="nv">formatted_cwd</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+</span><span class='line'>  <span class="nb">local </span><span class="nv">dir_sep</span><span class="o">=</span><span class="s2">&quot; | &quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">local </span><span class="nv">cwd</span><span class="o">=</span><span class="s2">&quot;${PWD/#$HOME/~}&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># get first char of the path, i.e. tilde or slash</span>
+</span><span class='line'>  <span class="o">[[</span> -n <span class="k">${</span><span class="nv">ZSH_VERSION</span><span class="p">-</span><span class="k">}</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">first_char</span><span class="o">=</span><span class="nv">$cwd</span><span class="o">[</span>1,1<span class="o">]</span> <span class="o">||</span> <span class="nv">first_char</span><span class="o">=</span><span class="k">${</span><span class="nv">cwd</span><span class="p">::</span><span class="nv">1</span><span class="k">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># remove leading tilde</span>
+</span><span class='line'>  <span class="nv">cwd</span><span class="o">=</span><span class="s2">&quot;${cwd#\~}&quot;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">while</span> <span class="o">[[</span> <span class="s2">&quot;$cwd&quot;</span> <span class="o">==</span> */* <span class="o">&amp;&amp;</span> <span class="s2">&quot;$cwd&quot;</span> !<span class="o">=</span> <span class="s2">&quot;/&quot;</span> <span class="o">]]</span>; <span class="k">do</span>
+</span><span class='line'>    <span class="c"># pop off last part of cwd</span>
+</span><span class='line'>    <span class="nb">local </span><span class="nv">part</span><span class="o">=</span><span class="s2">&quot;${cwd##*/}&quot;</span>
+</span><span class='line'>    <span class="nv">cwd</span><span class="o">=</span><span class="s2">&quot;${cwd%/*}&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nv">formatted_cwd</span><span class="o">=</span><span class="s2">&quot;$dir_sep$part$formatted_cwd&quot;</span>
+</span><span class='line'>    <span class="nv">part_count</span><span class="o">=</span><span class="k">$((</span>part_count+1<span class="k">))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">[[</span> <span class="nv">$part_count</span> -eq <span class="nv">$dir_limit</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">first_char</span><span class="o">=</span><span class="s2">&quot;$truncation&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">break</span>
+</span><span class='line'><span class="nb">  </span><span class="k">done</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">[[</span> <span class="s2">&quot;$formatted_cwd&quot;</span> !<span class="o">=</span> <span class="nv">$first_char</span>* <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nv">formatted_cwd</span><span class="o">=</span><span class="s2">&quot;$first_char$formatted_cwd&quot;</span>
+</span><span class='line'>  <span class="nb">printf</span> <span class="s2">&quot;%s&quot;</span> <span class="s2">&quot;$formatted_cwd&quot;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There are a few ways to get the function in the prompt, this is probably the
+simplest one:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;$(truncated_cwd) \$ &#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

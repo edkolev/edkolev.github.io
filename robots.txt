@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://edkolev.github.io/sitemap.xml 
