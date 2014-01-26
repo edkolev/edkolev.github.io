@@ -4,7 +4,7 @@
   <title><![CDATA[Category: shell | My Blog]]></title>
   <link href="http://edkolev.github.io/blog/categories/shell/atom.xml" rel="self"/>
   <link href="http://edkolev.github.io/"/>
-  <updated>2014-01-26T17:48:41+02:00</updated>
+  <updated>2014-01-26T18:04:23+02:00</updated>
   <id>http://edkolev.github.io/</id>
   <author>
     <name><![CDATA[Evgeni Kolev]]></name>
@@ -61,8 +61,9 @@ dir is a sub dir of $HOME or not.</p>
 <p>This is useless to me:</p>
 
 <ul>
-<li>Notice that when in dir <code>four</code>, the path is not truncated at all.</li>
-<li>The tilde <code>~</code> is never truncated</li>
+<li>Notice that when in dir <code>four</code>, the path is not truncated at all
+<code>~/one/two/three/four $</code></li>
+<li>The tilde <code>~</code> is never truncated <code>~/.../three/four/five $</code></li>
 </ul>
 
 
@@ -113,12 +114,6 @@ to achieve this task. This function must be as fast as possible and forking off
 
 <p>After some research on bash/zsh arrays, some head-banging and quite a bit of
 coffee, I managed to achieve the desired result:</p>
-
-<p><code>sh
-~ $ cd one/two/three/four/repository/
-⋯/three/four/repository $ cd /usr/local/Cellar/git/
-⋯/local/Cellar/git $
-</code></p>
 
 <p>In a subdir of $HOME:</p>
 

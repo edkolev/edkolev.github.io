@@ -150,8 +150,9 @@ dir is a sub dir of $HOME or not.</p>
 <p>This is useless to me:</p>
 
 <ul>
-<li>Notice that when in dir <code>four</code>, the path is not truncated at all.</li>
-<li>The tilde <code>~</code> is never truncated</li>
+<li>Notice that when in dir <code>four</code>, the path is not truncated at all
+<code>~/one/two/three/four $</code></li>
+<li>The tilde <code>~</code> is never truncated <code>~/.../three/four/five $</code></li>
 </ul>
 
 
@@ -211,15 +212,6 @@ to achieve this task. This function must be as fast as possible and forking off
 
 <p>After some research on bash/zsh arrays, some head-banging and quite a bit of
 coffee, I managed to achieve the desired result:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>~ <span class="nv">$ </span><span class="nb">cd </span>one/two/three/four/repository/
-</span><span class='line'>⋯/three/four/repository <span class="nv">$ </span><span class="nb">cd</span> /usr/local/Cellar/git/
-</span><span class='line'>⋯/local/Cellar/git <span class="err">$</span>
-</span></code></pre></td></tr></table></div></figure>
-
 
 <p>In a subdir of $HOME:</p>
 
