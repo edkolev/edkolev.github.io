@@ -8,8 +8,39 @@
         <name>Evgeni Kolev</name>
         <email>test@example.com</email>
     </author>
-    <updated>2017-04-09T00:00:00Z</updated>
+    <updated>2017-09-08T00:00:00Z</updated>
     <entry>
+    <title>Why I switched to Emacs</title>
+    <link href="http://edkolev.github.io//posts/2017-09-08-why-i-switched-to-emacs.html" />
+    <id>http://edkolev.github.io//posts/2017-09-08-why-i-switched-to-emacs.html</id>
+    <published>2017-09-08T00:00:00Z</published>
+    <updated>2017-09-08T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<div class="info">
+    September  8, 2017
+    
+</div>
+
+<h2 id="tldr">TL;DR</h2>
+<p>This January I stopped using vim after years of sharpening my vim setup because I couldn’t understand this very <a href="https://github.com/junegunn/vim-slash/commit/5e9d77b6375ad3f24e9208fa7bd7dd0b1d1a0cc0">commit</a>.</p>
+<h2 id="the-reason">The “reason”</h2>
+<p>In my mother tongue there are two different words for “reason” with significant differences in their meaning. The first one “причина”, is used to describe an event or more commonly, a series of events which lead to what usually turns out to be a bad situation. The other one “повод”, describes the very last event, the final straw which lead to the event.</p>
+<p>This commit, this patch of code was the last straw, it was the reason I would stop using my sharpened saw, my tool of trade, my Vim:</p>
+<p><a href="https://github.com/junegunn/vim-slash/commit/5e9d77b6375ad3f24e9208fa7bd7dd0b1d1a0cc0">https://github.com/junegunn/vim-slash/commit/5e9d77b6</a></p>
+<p>I had been following the <a href="https://github.com/junegunn/vim-slash">vim-slash</a> repo for some time because I had a similar functionality in my vimrc… and because I find this particular project interesting. I like following interesting projects.</p>
+<p>That commit fixed an issue that I had been experiencing myself. However, even after years of using Vim and writing VimL I had no idea how this patch would address the issue.</p>
+<p>On one hand, this commit seems like such an elegant solution to the problem - with just a few lines of code, the issue is completely fixed. On the other hand, however, this smells like such an ugly hack that.</p>
+<p>Up until that moment, I had been seeing VimL as an elegant solution, such beauty, so similar to all the scripting languages I’m (painfully) familiar with… but not more. I had seen the true side of it and I couldn’t see it in any other way.</p>
+<h2 id="the-cosmic-microwave-background-radiation">The cosmic microwave background radiation</h2>
+<p>Like the cosmic microwave background radiation, emacs-lisp has been there all along, waiting for me to discover it. And now that I have, I can’t go back, I can’t deny its existence, I can’t go back to VimL.</p>
+<p>Like seeing the “SH”, as in Steven Hawking, in the cosmic microwave background radiation - once you see it, you can’t un-see it.</p>
+<div class="figure">
+<img src="../images/2017-09-08-why-i-switched-to-emacs-ilc_9yr_moll4096.png" alt="cropped microwave background radiation image" />
+<p class="caption">cropped microwave background radiation image</p>
+</div>
+<p><sub><sup><a href="../images/2017-09-08-why-i-switched-to-emacs-ilc_9yr_moll4096.png">image source</a></sup></sub></p>
+]]></summary>
+</entry>
+<entry>
     <title>Test post Hakyll</title>
     <link href="http://edkolev.github.io//posts/2017-04-09-hakyll-test-post.html" />
     <id>http://edkolev.github.io//posts/2017-04-09-hakyll-test-post.html</id>
