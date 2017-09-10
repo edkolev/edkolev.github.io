@@ -8,8 +8,167 @@
         <name>Evgeni Kolev</name>
         <email>test@example.com</email>
     </author>
-    <updated>2017-09-08T00:00:00Z</updated>
+    <updated>2017-09-10T00:00:00Z</updated>
     <entry>
+    <title>Travis CI integration for emacs packages</title>
+    <link href="http://edkolev.github.io//posts/2017-09-10-travis-for-emacs-packages.html" />
+    <id>http://edkolev.github.io//posts/2017-09-10-travis-for-emacs-packages.html</id>
+    <published>2017-09-10T00:00:00Z</published>
+    <updated>2017-09-10T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<div class="info">
+    September 10, 2017
+    
+</div>
+
+<p>This post will show how to add simple make-based testing support for running automated emacs <code>ert</code> tests.</p>
+<p>The following utilities will be available on the development machine:</p>
+<ul>
+<li><code>make update</code> will install the development dependencies</li>
+<li><code>make compile</code> will compile the .el files</li>
+<li><code>make clean</code> will remove the compiled files</li>
+</ul>
+<p>The Travis build will fail with an error when:</p>
+<ul>
+<li>a compilation warning or error occurs</li>
+<li>an automated test fails</li>
+</ul>
+<p>This will be the resulting directory structure, where <code>&lt;my-package&gt;.el</code> is the hypothetical package we’d like to test:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">.</span>
+├── <span class="ex">.travis.yml</span>         <span class="kw">;;</span> <span class="ex">Travis</span> CI config
+├── <span class="ex">.elpa</span>               <span class="kw">;;</span> <span class="ex">contains</span> installed deps
+├── <span class="ex">Makefile</span>            <span class="kw">;;</span> <span class="ex">shortcuts</span> to test/make-*.el
+├── <span class="op">&lt;</span><span class="ex">my-package</span><span class="op">&gt;</span>.el     <span class="kw">;;</span> <span class="ex">package</span> being tested
+└── <span class="bu">test</span>
+    ├── <span class="ex">elpa.el</span>         <span class="kw">;;</span> <span class="ex">initialize</span> package.el
+    ├── <span class="ex">tests.el</span>        <span class="kw">;;</span> <span class="ex">automated</span> tests
+    ├── <span class="ex">make-compile.el</span> <span class="kw">;;</span> <span class="ex">compile</span> *el files
+    ├── <span class="ex">make-test.el</span>    <span class="kw">;;</span> <span class="ex">run</span> automated tests
+    └── <span class="ex">make-update.el</span>  <span class="kw">;;</span> <span class="fu">install</span> dependencies</code></pre></div>
+<p>These files have to be modified, the rest can be copied as is:</p>
+<ul>
+<li><code>test/make-compile.el</code> contains the dev dependencies of the package</li>
+<li><code>test/tests.el</code> contains the automated tests</li>
+</ul>
+<p>The rest of the files don’t need to be modified. However, if needed, they can easily be changed since each one is small, simple, serves one purpose, thus easy to tweak.</p>
+<h2 id="travis.yml">.travis.yml</h2>
+<p>This file is the entry point for Travis CI.</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="co"># .travis.yml</span>
+<span class="fu">sudo:</span><span class="at"> true</span>
+<span class="fu">dist:</span><span class="at"> precise</span>
+<span class="fu">language:</span><span class="at"> emacs-lisp</span>
+<span class="fu">env:</span>
+  <span class="fu">matrix:</span>
+    <span class="kw">-</span> emacs=emacs-snapshot
+
+<span class="fu">before_install:</span>
+  <span class="kw">-</span> <span class="fu">sudo add-apt-repository -y ppa:</span><span class="at">ubuntu-elisp</span>
+  <span class="kw">-</span> sudo apt-get update -qq
+  <span class="kw">-</span> sudo apt-get install -qq $emacs
+
+<span class="fu">script:</span>
+  <span class="kw">-</span> make update
+  <span class="kw">-</span> make compile
+  <span class="kw">-</span> make test</code></pre></div>
+<h2 id="makefile">Makefile</h2>
+<p>The Makefile is used for nothing but shortcuts to running the tasks.</p>
+<div class="sourceCode"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span class="dv">update:</span>
+	emacs -batch -l test/make-update.el
+
+<span class="dv">compile:</span><span class="dt"> clean</span>
+	emacs -batch -l test/elpa.el -l test/make-compile.el
+
+<span class="dv">test:</span>
+	emacs -batch -l test/elpa.el -l test/make-test.el
+
+<span class="dv">clean:</span>
+	rm -f *.elc
+
+<span class="ot">.PHONY:</span><span class="dt"> update compile test clean</span></code></pre></div>
+<h2 id="testelpa.el">test/elpa.el</h2>
+<p>Initializes package.el.</p>
+<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp">(<span class="kw">setq</span> package-user-dir
+      (expand-file-name (<span class="kw">format</span> <span class="st">&quot;.elpa/%s/elpa&quot;</span> emacs-version)))
+(package-initialize)
+(add-to-list &#39;load-path default-directory)</code></pre></div>
+<h2 id="testmake-compile.el">test/make-compile.el</h2>
+<p>This file compiles <code>*.el</code> files in the package root directory.</p>
+<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><span class="co">;;  bail out on compilation warnings and errors</span>
+(<span class="kw">setq</span> byte-compile-error-on-warn <span class="kw">t</span>)
+(<span class="kw">setq</span> byte-compile--use-old-handlers <span class="kw">nil</span>)
+
+<span class="co">;; compile *.el files</span>
+(<span class="kw">dolist</span> (file (file-expand-wildcards <span class="st">&quot;*.el&quot;</span>))
+  (<span class="kw">unless</span> (byte-compile-file file)
+    (kill-emacs <span class="dv">1</span>)))</code></pre></div>
+<h2 id="testmake-test.el">test/make-test.el</h2>
+<p>This file runs the tests in <code>tests/tests.el</code>.</p>
+<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp">(<span class="kw">let*</span> ((project-tests-file <span class="st">&quot;tests.el&quot;</span>)
+       (current-directory (file-name-directory load-file-name))
+       (project-test-path (expand-file-name <span class="st">&quot;.&quot;</span> current-directory))
+       (project-root-path (expand-file-name <span class="st">&quot;..&quot;</span> current-directory)))
+
+  <span class="co">;; add the package being tested to &#39;load-path so it can be &#39;require-d</span>
+  (add-to-list &#39;load-path project-root-path)
+  (add-to-list &#39;load-path project-test-path)
+
+  <span class="co">;; load the file with tests</span>
+  (<span class="kw">load</span> (expand-file-name project-tests-file project-test-path) <span class="kw">nil</span> <span class="kw">t</span>)
+
+  <span class="co">;; run the tests</span>
+  (ert-run-tests-batch-and-exit))</code></pre></div>
+<h2 id="testmake-update.el">test/make-update.el</h2>
+<p>This file installs dependencies in the <code>.elpa</code> directory.</p>
+<p>The <code>dev-packages</code> variable should be modified per the package’s needs. This example adds the <code>evil</code> and <code>evil-test-helpers</code> packages as dependencies for illustrative purpose.</p>
+<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><span class="co">;; list of the all the dependencies, including the dev dependencies</span>
+(<span class="kw">defvar</span><span class="fu"> dev-packages </span>&#39;(evil evil-test-helpers))
+
+<span class="co">;; initialize package.el</span>
+(<span class="kw">setq</span> package-user-dir
+      (expand-file-name (<span class="kw">format</span> <span class="st">&quot;.elpa/%s/elpa&quot;</span> emacs-version)))
+(message <span class="st">&quot;installing in %s ...</span>\n<span class="st">&quot;</span> package-user-dir)
+(package-initialize)
+(<span class="kw">setq</span> package-archives
+      &#39;((<span class="st">&quot;melpa&quot;</span> . <span class="st">&quot;http://melpa.org/packages/&quot;</span>)
+        (<span class="st">&quot;gnu&quot;</span> . <span class="st">&quot;http://elpa.gnu.org/packages/&quot;</span>)))
+(package-refresh-contents)
+
+<span class="co">;; install dependencies</span>
+(<span class="kw">dolist</span> (<span class="kw">package</span> dev-packages)
+  (<span class="kw">unless</span> (package-installed-p <span class="kw">package</span>)
+    (<span class="kw">ignore-errors</span>
+      (package-install <span class="kw">package</span>))))
+
+<span class="co">;; upgrade dependencies</span>
+(save-window-excursion
+  (package-list-packages <span class="kw">t</span>)
+  (condition-case <span class="kw">nil</span>
+      (<span class="kw">progn</span>
+        (package-menu-mark-upgrades)
+        (package-menu-execute <span class="kw">t</span>))
+    (<span class="kw">error</span>
+     (message <span class="st">&quot;All packages up to date&quot;</span>))))</code></pre></div>
+<h2 id="testtests.el">test/tests.el</h2>
+<p>This file contains the unit tests for <code>my-package</code>, the package being tested. This example tests a hypothetical function <code>my-package-add-numers</code>.</p>
+<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp">(<span class="kw">require</span> &#39;ert)
+(<span class="kw">require</span> &#39;my-package)
+
+(ert-deftest sample-test ()
+  (ert-info (<span class="st">&quot;test function my-package-add-numers&quot;</span>)
+    (should (<span class="kw">eq</span> <span class="dv">3</span> (my-package-add-numers <span class="dv">1</span> <span class="dv">2</span>))</code></pre></div>
+<h2 id="gitignore-optional">.gitignore (optional)</h2>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">.elpa/</span>
+<span class="ex">*.elc</span></code></pre></div>
+<h1 id="summary">Summary</h1>
+<p>The described approach is simple in the sense that it doesn’t add any dependencies to the package, other than <code>make</code>. Everything else is included with emacs - package.el, ert.el, etc.</p>
+<p>The obvious disadvantage is the wordiness - this method involves multiple files.</p>
+<p>See also:</p>
+<ul>
+<li><a href="https://github.com/cask/cask">cask</a> - this seems to be a tool designed for this purpose solely. Haven’t tried it yet.</li>
+<li><a href="https://github.com/rejeep/evm">evm</a> - a tool which allows installing multiple versions of emacs. Seems entangled with cask, but doesn’t require it. This tool can be used to run the tests against multiple versions of emacs, not sure if it can be achieved without pulling in cask as a dependency</li>
+</ul>
+]]></summary>
+</entry>
+<entry>
     <title>Why I switched to Emacs</title>
     <link href="http://edkolev.github.io//posts/2017-09-08-why-i-switched-to-emacs.html" />
     <id>http://edkolev.github.io//posts/2017-09-08-why-i-switched-to-emacs.html</id>
