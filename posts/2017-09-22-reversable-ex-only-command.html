@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-        <title>Evgeni Kolev Blog - Test post Hakyll</title>
+        <title>Evgeni Kolev Blog - Make :only ex command reversible</title>
         <link rel="stylesheet" href="../css/default.css" />
         <link rel="stylesheet" href="../css/syntax.css" />
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
@@ -22,17 +22,21 @@
         </div>
 
         <div id="content">
-            <h1>Test post Hakyll</h1>
+            <h1>Make :only ex command reversible</h1>
             <div class="info">
-    April  9, 2017
+    September 22, 2017
     
 </div>
 
-<h1 id="test-post">test post</h1>
-<p>This is a sentence. And another one.</p>
-<p>This is some lisp code</p>
-<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp">(<span class="kw">defun</span><span class="fu"> test </span>(arg)
-  (message <span class="st">&quot;hello&quot;</span>))</code></pre></div>
+<p>The <code>:only</code> ex command is one of my most used ones. Here’s how it can be tweaked so that it doesn’t only (pun intended) hide all the other windows, but it restores them when re-executed. it You can think of it as a zoom/un-zoom command.</p>
+<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp">(<span class="kw">use-package</span> zygospore
+  :ensure <span class="kw">t</span>
+  :commands zygospore-toggle-delete-other-windows
+  :init
+  (evil-ex-define-cmd <span class="st">&quot;only&quot;</span> 'zygospore-toggle-delete-other-windows))</code></pre></div>
+<p>The above snippet uses the <a href="https://github.com/louiskottmann/zygospore.el">zygospore</a> package, which is but a thin wrapper around emacs core functionality. Go ahead and check out its code.</p>
+<p>I often enter <code>:On</code> instead of <code>:on</code> which results in a disruption of my flow with an unpleasant “Unknown command” message. Why not create an alias then?</p>
+<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp">(evil-ex-define-cmd <span class="st">&quot;Only&quot;</span> <span class="st">&quot;only&quot;</span>)</code></pre></div>
 
 <div id="disqus_thread"></div>
 <script>
