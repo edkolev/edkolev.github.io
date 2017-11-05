@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <title>Evgeni Kolev Blog - Quickstart emacs with evil</title>
+        <link rel="stylesheet" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/syntax.css" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="../atom.xml">
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../">Home</a>
+            </div>
+            <div id="navigation">
+                <a href="../about.html">About</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Quickstart emacs with evil</h1>
+            <div class="info">
+    September 25, 2017
+    
+</div>
+
+<p>This post is intended to present a minimal example of setting up emacs with evil, and a few common evil plugins like evil-surround.</p>
+<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><span class="co">;; load package manager, add the Melpa package registry</span>
+(<span class="kw">require</span> 'package)
+(add-to-list 'package-archives '(<span class="st">&quot;melpa&quot;</span> . <span class="st">&quot;https://melpa.org/packages/&quot;</span>) <span class="kw">t</span>)
+(package-initialize)
+
+<span class="co">;; bootstrap use-package</span>
+(<span class="kw">unless</span> (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(<span class="kw">require</span> 'use-package)
+
+<span class="co">;; load evil</span>
+(<span class="kw">use-package</span> evil
+  :ensure <span class="kw">t</span> <span class="co">;; install the evil package if not installed</span>
+  :init <span class="co">;; tweak evil's configuration before loading it</span>
+  (<span class="kw">setq</span> evil-search-module 'evil-search)
+  (<span class="kw">setq</span> evil-ex-complete-emacs-commands <span class="kw">nil</span>)
+  (<span class="kw">setq</span> evil-vsplit-window-right <span class="kw">t</span>)
+  (<span class="kw">setq</span> evil-split-window-below <span class="kw">t</span>)
+  (<span class="kw">setq</span> evil-shift-round <span class="kw">nil</span>)
+  (<span class="kw">setq</span> evil-want-C-u-scroll <span class="kw">t</span>)
+  :config <span class="co">;; tweak evil after loading it</span>
+  (evil-mode)
+
+  <span class="co">;; example how to map a command in normal mode (called 'normal state' in evil)</span>
+  (define-key evil-normal-state-map (kbd <span class="st">&quot;, w&quot;</span>) 'evil-window-vsplit))
+
+<span class="co">;; vdiff</span>
+(<span class="kw">use-package</span> vdiff
+  :ensure <span class="kw">t</span>
+  <span class="co">;; the :commands part is optional, it ensures the vdiff packages is lazy loaded</span>
+  :commands (vdiff-buffers vdiff-buffers3 vdiff-files vdiff-files3)
+  :init
+  <span class="co">;; add ex commands, :vdiff-buffers etc.</span>
+  (evil-ex-define-cmd <span class="st">&quot;vdiff-buffers&quot;</span> 'vdiff-buffers)
+  (evil-ex-define-cmd <span class="st">&quot;vdiff-buffers3&quot;</span> 'vdiff-buffers3)
+  (evil-ex-define-cmd <span class="st">&quot;vdiff-files&quot;</span> 'vdiff-files)
+  (evil-ex-define-cmd <span class="st">&quot;vdiff-files3&quot;</span> 'vdiff-files3)
+  (evil-ex-define-cmd <span class="st">&quot;diff-orig&quot;</span> 'vdiff-current-file)
+  :config
+  <span class="co">;; vdiff is a minor mode, use function `evil-define-minor-mode-key'</span>
+  <span class="co">;; to map keys when minor modes are active</span>
+  (evil-define-minor-mode-key 'normal 'vdiff-mode
+    <span class="st">&quot;]c&quot;</span> 'vdiff-next-hunk
+    <span class="st">&quot;[c&quot;</span> 'vdiff-previous-hunk
+    <span class="st">&quot;zc&quot;</span> 'vdiff-close-fold
+    <span class="st">&quot;zM&quot;</span> 'vdiff-close-all-folds
+    <span class="st">&quot;zo&quot;</span> 'vdiff-open-fold
+    <span class="st">&quot;zR&quot;</span> 'vdiff-open-all-folds
+    <span class="st">&quot;go&quot;</span> 'vdiff-receive-changes
+    <span class="st">&quot;gp&quot;</span> 'vdiff-send-changes
+    <span class="st">&quot;q&quot;</span> 'evgeni-vdiff-close-if-readonly))
+
+(<span class="kw">use-package</span> js2-mode
+  <span class="co">;; example how to map a command in normal mode, only when a major mode is active</span>
+  <span class="co">;; TODO finish this</span>
+  (evil-define-key 'normal perl-mode-map
+    (kbd <span class="st">&quot;C-c f&quot;</span>) 'evgeni-define-perl-function))
+
+<span class="co">;; TODO evil plugins</span></code></pre></div>
+
+<div id="disqus_thread"></div>
+<script>
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://edkolev.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+        </div>
+
+        <div id="footer">
+            Evgeni Kolev. Generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+</html>

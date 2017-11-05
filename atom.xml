@@ -8,8 +8,92 @@
         <name>Evgeni Kolev</name>
         <email>test@example.com</email>
     </author>
-    <updated>2017-09-22T00:00:00Z</updated>
+    <updated>2017-09-25T00:00:00Z</updated>
     <entry>
+    <title>Quickstart emacs with evil</title>
+    <link href="http://edkolev.github.io//posts/2017-09-25-emacs-use-package-with-evil-quickstart.html" />
+    <id>http://edkolev.github.io//posts/2017-09-25-emacs-use-package-with-evil-quickstart.html</id>
+    <published>2017-09-25T00:00:00Z</published>
+    <updated>2017-09-25T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<div class="info">
+    September 25, 2017
+    
+</div>
+
+<p>This post is intended to present a minimal example of setting up emacs with evil, and a few common evil plugins like evil-surround.</p>
+<div class="sourceCode"><pre class="sourceCode lisp"><code class="sourceCode commonlisp"><span class="co">;; load package manager, add the Melpa package registry</span>
+(<span class="kw">require</span> &#39;package)
+(add-to-list &#39;package-archives &#39;(<span class="st">&quot;melpa&quot;</span> . <span class="st">&quot;https://melpa.org/packages/&quot;</span>) <span class="kw">t</span>)
+(package-initialize)
+
+<span class="co">;; bootstrap use-package</span>
+(<span class="kw">unless</span> (package-installed-p &#39;use-package)
+  (package-refresh-contents)
+  (package-install &#39;use-package))
+(<span class="kw">require</span> &#39;use-package)
+
+<span class="co">;; load evil</span>
+(<span class="kw">use-package</span> evil
+  :ensure <span class="kw">t</span> <span class="co">;; install the evil package if not installed</span>
+  :init <span class="co">;; tweak evil&#39;s configuration before loading it</span>
+  (<span class="kw">setq</span> evil-search-module &#39;evil-search)
+  (<span class="kw">setq</span> evil-ex-complete-emacs-commands <span class="kw">nil</span>)
+  (<span class="kw">setq</span> evil-vsplit-window-right <span class="kw">t</span>)
+  (<span class="kw">setq</span> evil-split-window-below <span class="kw">t</span>)
+  (<span class="kw">setq</span> evil-shift-round <span class="kw">nil</span>)
+  (<span class="kw">setq</span> evil-want-C-u-scroll <span class="kw">t</span>)
+  :config <span class="co">;; tweak evil after loading it</span>
+  (evil-mode)
+
+  <span class="co">;; example how to map a command in normal mode (called &#39;normal state&#39; in evil)</span>
+  (define-key evil-normal-state-map (kbd <span class="st">&quot;, w&quot;</span>) &#39;evil-window-vsplit))
+
+<span class="co">;; vdiff</span>
+(<span class="kw">use-package</span> vdiff
+  :ensure <span class="kw">t</span>
+  <span class="co">;; the :commands part is optional, it ensures the vdiff packages is lazy loaded</span>
+  :commands (vdiff-buffers vdiff-buffers3 vdiff-files vdiff-files3)
+  :init
+  <span class="co">;; add ex commands, :vdiff-buffers etc.</span>
+  (evil-ex-define-cmd <span class="st">&quot;vdiff-buffers&quot;</span> &#39;vdiff-buffers)
+  (evil-ex-define-cmd <span class="st">&quot;vdiff-buffers3&quot;</span> &#39;vdiff-buffers3)
+  (evil-ex-define-cmd <span class="st">&quot;vdiff-files&quot;</span> &#39;vdiff-files)
+  (evil-ex-define-cmd <span class="st">&quot;vdiff-files3&quot;</span> &#39;vdiff-files3)
+  (evil-ex-define-cmd <span class="st">&quot;diff-orig&quot;</span> &#39;vdiff-current-file)
+  :config
+  <span class="co">;; vdiff is a minor mode, use function `evil-define-minor-mode-key&#39;</span>
+  <span class="co">;; to map keys when minor modes are active</span>
+  (evil-define-minor-mode-key &#39;normal &#39;vdiff-mode
+    <span class="st">&quot;]c&quot;</span> &#39;vdiff-next-hunk
+    <span class="st">&quot;[c&quot;</span> &#39;vdiff-previous-hunk
+    <span class="st">&quot;zc&quot;</span> &#39;vdiff-close-fold
+    <span class="st">&quot;zM&quot;</span> &#39;vdiff-close-all-folds
+    <span class="st">&quot;zo&quot;</span> &#39;vdiff-open-fold
+    <span class="st">&quot;zR&quot;</span> &#39;vdiff-open-all-folds
+    <span class="st">&quot;go&quot;</span> &#39;vdiff-receive-changes
+    <span class="st">&quot;gp&quot;</span> &#39;vdiff-send-changes
+    <span class="st">&quot;q&quot;</span> &#39;evgeni-vdiff-close-if-readonly))
+
+(<span class="kw">use-package</span> js2-mode
+  <span class="co">;; example how to map a command in normal mode, only when a major mode is active</span>
+  <span class="co">;; TODO finish this</span>
+  (evil-define-key &#39;normal perl-mode-map
+    (kbd <span class="st">&quot;C-c f&quot;</span>) &#39;evgeni-define-perl-function))
+
+<span class="co">;; TODO evil plugins</span></code></pre></div>
+
+<div id="disqus_thread"></div>
+<script>
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://edkolev.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+]]></summary>
+</entry>
+<entry>
     <title>Make :only ex command reversible</title>
     <link href="http://edkolev.github.io//posts/2017-09-22-reversable-ex-only-command.html" />
     <id>http://edkolev.github.io//posts/2017-09-22-reversable-ex-only-command.html</id>
@@ -57,6 +141,7 @@
 <ul>
 <li><code>make update</code> will install the development dependencies</li>
 <li><code>make compile</code> will compile the .el files</li>
+<li><code>make test</code> will run the <code>ert</code> tests</li>
 <li><code>make clean</code> will remove the compiled files</li>
 </ul>
 <p>The Travis build will fail with an error when:</p>
