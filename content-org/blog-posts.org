@@ -1,0 +1,515 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: posts
+
+#+HUGO_WEIGHT: auto
+#+HUGO_AUTO_SET_LASTMOD: nil
+#+HUGO_CODE_FENCE: nil
+
+* About
+:PROPERTIES:
+:EXPORT_FILE_NAME: about
+:EXPORT_HUGO_SECTION: page
+:EXPORT_HUGO_MENU: :menu main
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :comments false
+:END:
+
+My name is Evgeni, this is my personal blog where I write about
+whatever I’m interesed in at the time of writing.
+
+Content on this blog is reusabe under CC BY-SA 4.0
+
+* Posts                                                              :@posts:
+  
+** Make :only ex command reversible
+:PROPERTIES:
+:EXPORT_FILE_NAME: reversable-ex-only-command
+:EXPORT_DATE: 2017-09-22
+:EXPORT_DESCRIPTION: like zoom/un-zoom
+:END:
+
+The =:only= ex command is one of my most used ones. Here's how it can
+be tweaked so that it doesn't only (pun intended) hide all the other
+windows, but it restores them when re-executed. it You can think of it
+as a zoom/un-zoom command.
+
+#+BEGIN_SRC elisp
+(use-package zygospore
+  :ensure t
+  :commands zygospore-toggle-delete-other-windows
+  :init
+  (evil-ex-define-cmd "only" 'zygospore-toggle-delete-other-windows))
+#+END_SRC
+
+The above snippet uses the [[https://github.com/louiskottmann/zygospore.el][zygospore]] package, which is but a thin
+wrapper around emacs core functionality. Go ahead and check out its code.
+
+I often enter =:On= instead of =:on= which results in a disruption of
+my flow with an unpleasant "Unknown command" message. Why not create
+an alias then?
+
+#+BEGIN_SRC elisp
+(evil-ex-define-cmd "Only" "only")
+#+END_SRC
+
+** Travis CI integration for emacs packages
+:PROPERTIES:
+:EXPORT_FILE_NAME: travis-for-emacs-packages
+:EXPORT_DATE: 2017-09-10
+:EXPORT_DESCRIPTION: to run automated tests
+:END:
+
+This post will show how to add simple make-based testing support for
+running automated emacs `ert` tests.
+
+The following utilities will be available on the development machine:
+
+- `make update` will install the development dependencies
+- `make compile` will compile the .el files
+- `make test` will run the `ert` tests
+- `make clean` will remove the compiled files
+
+The Travis build will fail with an error when:
+
+- a compilation warning or error occurs
+- an automated test fails
+
+This will be the resulting directory structure, where `<my-package>.el` is
+the hypothetical package we'd like to test:
+
+#+BEGIN_SRC bash
+.
+├── .travis.yml         ;; Travis CI config
+├── .elpa               ;; contains installed deps
+├── Makefile            ;; shortcuts to test/make-*.el
+├── <my-package>.el     ;; package being tested
+└── test
+    ├── elpa.el         ;; initialize package.el
+    ├── tests.el        ;; automated tests
+    ├── make-compile.el ;; compile *el files
+    ├── make-test.el    ;; run automated tests
+    └── make-update.el  ;; install dependencies
+#+END_SRC
+
+These files have to be modified, the rest can be copied as is:
+
+- `test/make-compile.el` contains the dev dependencies of the package
+- `test/tests.el` contains the automated tests
+
+The rest of the files don't need to be modified. However, if needed,
+they can easily be changed since each one is small, simple, serves one
+purpose, thus easy to tweak.
+
+*** .travis.yml
+
+This file is the entry point for Travis CI.
+
+#+BEGIN_SRC yaml
+# .travis.yml
+sudo: true
+dist: precise
+language: emacs-elisp
+env:
+  matrix:
+    - emacs=emacs-snapshot
+
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-elisp
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq $emacs
+
+script:
+  - make update
+  - make compile
+  - make test
+#+END_SRC
+
+*** Makefile
+
+The Makefile is used for nothing but shortcuts to running the tasks.
+
+#+BEGIN_SRC makefile
+update:
+	emacs -batch -l test/make-update.el
+
+compile: clean
+	emacs -batch -l test/elpa.el -l test/make-compile.el
+
+test:
+	emacs -batch -l test/elpa.el -l test/make-test.el
+
+clean:
+	rm -f *.elc
+
+.PHONY: update compile test clean
+#+END_SRC
+
+*** test/elpa.el 
+
+Initializes package.el.
+
+#+BEGIN_SRC elisp
+(setq package-user-dir
+      (expand-file-name (format ".elpa/%s/elpa" emacs-version)))
+(package-initialize)
+(add-to-list 'load-path default-directory)
+#+END_SRC
+
+*** test/make-compile.el
+
+This file compiles `*.el` files in the package root directory.
+
+#+BEGIN_SRC elisp
+;;  bail out on compilation warnings and errors
+(setq byte-compile-error-on-warn t)
+(setq byte-compile--use-old-handlers nil)
+
+;; compile *.el files
+(dolist (file (file-expand-wildcards "*.el"))
+  (unless (byte-compile-file file)
+    (kill-emacs 1)))
+
+#+END_SRC
+
+*** test/make-test.el
+
+This file runs the tests in `tests/tests.el`.
+
+#+BEGIN_SRC elisp
+(let* ((project-tests-file "tests.el")
+       (current-directory (file-name-directory load-file-name))
+       (project-test-path (expand-file-name "." current-directory))
+       (project-root-path (expand-file-name ".." current-directory)))
+
+  ;; add the package being tested to 'load-path so it can be 'require-d
+  (add-to-list 'load-path project-root-path)
+  (add-to-list 'load-path project-test-path)
+
+  ;; load the file with tests
+  (load (expand-file-name project-tests-file project-test-path) nil t)
+
+  ;; run the tests
+  (ert-run-tests-batch-and-exit))
+#+END_SRC
+
+*** test/make-update.el
+
+This file installs dependencies in the `.elpa` directory.
+
+The `dev-packages` variable should be modified per the package's
+needs. This example adds the `evil` and `evil-test-helpers` packages
+as dependencies for illustrative purpose.
+
+#+BEGIN_SRC elisp
+;; list of the all the dependencies, including the dev dependencies
+(defvar dev-packages '(evil evil-test-helpers))
+
+;; initialize package.el
+(setq package-user-dir
+      (expand-file-name (format ".elpa/%s/elpa" emacs-version)))
+(message "installing in %s ...\n" package-user-dir)
+(package-initialize)
+(setq package-archives
+      '(("melpa" . "http://melpa.org/packages/")
+        ("gnu" . "http://elpa.gnu.org/packages/")))
+(package-refresh-contents)
+
+;; install dependencies
+(dolist (package dev-packages)
+  (unless (package-installed-p package)
+    (ignore-errors
+      (package-install package))))
+
+;; upgrade dependencies
+(save-window-excursion
+  (package-list-packages t)
+  (condition-case nil
+      (progn
+        (package-menu-mark-upgrades)
+        (package-menu-execute t))
+    (error
+     (message "All packages up to date"))))
+#+END_SRC
+
+*** test/tests.el
+
+This file contains the unit tests for `my-package`, the package being
+tested. This example tests a hypothetical function
+`my-package-add-numers`.
+
+#+BEGIN_SRC elisp
+(require 'ert)
+(require 'my-package)
+
+(ert-deftest sample-test ()
+  (ert-info ("test function my-package-add-numers")
+    (should (eq 3 (my-package-add-numers 1 2))
+#+END_SRC
+
+*** .gitignore (optional)
+
+#+BEGIN_SRC bash
+.elpa/
+*.elc
+#+END_SRC
+
+# Summary
+
+The described approach is simple in the sense that it doesn't add any
+dependencies to the package, other than `make`. Everything else is
+included with emacs - package.el, ert.el, etc.
+
+The obvious disadvantage is the wordiness - this method involves
+multiple files.
+
+See also:
+
+- [cask][1] - this seems to be a tool designed for this purpose
+  solely. Haven't tried it yet.
+- [evm][2] - a tool which allows installing multiple versions of
+  emacs. Seems entangled with cask, but doesn't require it. This tool
+  can be used to run the tests against multiple versions of emacs, not
+  sure if it can be achieved without pulling in cask as a dependency
+
+[1]: https://github.com/cask/cask
+[2]: https://github.com/rejeep/evm
+
+** Why I switched to Emacs
+:PROPERTIES:
+:EXPORT_FILE_NAME: why-i-switched-to-emacs
+:EXPORT_DATE: 2017-09-08
+:EXPORT_DESCRIPTION: after so many years with vim.
+:END:
+
+*** TL;DR
+
+This January I stopped using vim after years of sharpening my vim
+setup because I couldn't understand this very [[https://github.com/junegunn/vim-slash/commit/5e9d77b6][commit]].
+
+*** The "reason"
+
+In my mother tongue there are two different words for "reason" with
+significant differences in their meaning. The first one "причина", is
+used to describe an event or more commonly, a series of events which
+lead to what usually turns out to be a bad situation. The other one
+"повод", describes the very last event, the final straw which lead to
+the event.
+
+This commit, this patch of code was the last straw, it was the reason I
+would stop using my sharpened saw, my tool of trade, my Vim:
+
+[[https://github.com/junegunn/vim-slash/commit/5e9d77b6]]
+
+I had been following the [[https://github.com/junegunn/vim-slash][vim-slash]] repo for some time because I had a
+similar functionality in my vimrc... and because I find this
+particular project interesting. I like following interesting projects.
+
+That commit fixed an issue that I had been experiencing
+myself. However, even after years of using Vim and writing VimL I had
+no idea how this patch would address the issue.
+
+On one hand, this commit seems like such an elegant solution to the
+problem - with just a few lines of code, the issue is completely
+fixed.  On the other hand, however, this smells like such an ugly hack
+that.
+
+Up until that moment, I had been seeing VimL as an elegant solution,
+such beauty, so similar to all the scripting languages I'm (painfully)
+familiar with... but not more. I had seen the true side of it and I
+couldn't see it in any other way.
+
+*** The cosmic microwave background radiation
+
+Like the cosmic microwave background radiation, emacs-lisp has been
+there all along, waiting for me to discover it. And now that I have, I
+can't go back, I can't deny its existence, I can't go back to VimL.
+
+Like seeing the "SH", as in Steven Hawking, in the
+cosmic microwave background radiation - once you see it, you can't
+un-see it.
+
+[[/images/2017-09-08-why-i-switched-to-emacs-ilc_9yr_moll4096.png]]
+  
+** Prompt working directory                           :bash:zsh:shell:prompt:
+:PROPERTIES:
+:EXPORT_FILE_NAME: 2014-01-26-bash-directory-truncation
+:EXPORT_DATE: 2017-12-27
+:EXPORT_DESCRIPTION: shorten ~/down/the/rabbit/hole to ⋯/the/rabbit/hole in prompt
+:END:
+
+*** TL;DR
+
+Shorten =~/very/deep/down/the/rabbit/hole= to =⋯/the/rabbit/hole= in
+prompt.
+
+If you're staring at a shell prompt a few hours every day, you might as well
+try to modify the prompt to better suit your needs.  Some people like a
+minimalistic prompt with nothing but the working dir and a dollar sign =~ $=.
+Others get an enormous 256-color multi-line beast holding information about the
+kernel version, battery status, daily horoscope and what not. There's yet
+another group which sticks with whatever their system's default is.
+
+This post will hopefully come in handy for the first and second group.
+
+*** The Goal
+
+The working directory should be readable no matter how
+=~/very/deep/down/the/rabbit/hole= you're in in the file system. To maintain
+readability, the working dir displayed in the prompt should contain no more
+than three sub directories =⋯/the/rabbit/hole= 
+
+Bash version 4+ actually has an option to do this =PROMPT_DIRTRIM=3=, but I
+find it's behaviour ludicrous: it behaves (very) differently when the working
+dir is a sub dir of $HOME or not.
+
+Working dir is a subdir of $HOME:
+
+#+BEGIN_SRC bash
+~ $ PROMPT_DIRTRIM=3
+~ $ cd one/
+~/one $ cd two/
+~/one/two $ cd three/
+~/one/two/three $ cd four/
+~/one/two/three/four $ cd five/
+~/.../three/four/five $
+#+END_SRC
+
+This is useless to me:
+
+- Notice that when in dir =four=, the path is not truncated at all
+  =~/one/two/three/four $=
+- The tilde =~= is never truncated =~/.../three/four/five $=
+
+Working dir is not a subdir of $HOME:
+
+#+BEGIN_SRC bash
+~ $ PROMPT_DIRTRIM=3
+/ $ cd one/
+/one $ cd two/
+/one/two $ cd three/
+/one/two/three $ cd four/
+.../two/three/four $ cd five/
+.../three/four/five $
+#+END_SRC
+
+This is much better! ... or not:
+
+- Most of the time I'm somewhere in $HOME
+- I would really like to use a single char =⋯= instead of three dots =...=.
+  Screen real-estate does not come that cheap. I work with many vim/tmux panes,
+  so cutting some fat here and there does make a difference.
+
+Also, I've been wanting to improve my shell scripting skills for some time.
+This seemed like a nice challenge.
+
+*** Truncate function
+
+In theory, truncating the $PWD to 3 dirs seemed like a very simple task. In
+practice, it turned out a (tiny) bit more complicated. In javascript (a
+language I'm mostly unfamiliar with), this could be achieved with pretty much
+one line of code:
+
+(Note that this is greatly simplified and doesn't handle any corner cases.)
+
+#+BEGIN_SRC javascript
+PWD.split('/').slice(-3).join('/')
+#+END_SRC
+
+How hard could it be to port this to bash (and zsh)?
+
+One thing I want to stress is that external processes must **not** be created
+to achieve this task. This function must be as fast as possible and forking off
+=sed=, =awd= and what not, is not a viable option.
+
+*** The result
+
+After some research on bash/zsh arrays, some head-banging and quite a bit of
+coffee, I managed to achieve the desired result:
+
+In a subdir of $HOME:
+
+#+BEGIN_SRC bash
+~ $ cd one/
+~/one $ cd two/
+~/one/two $ cd three/
+⋯/one/two/three $ cd four/
+⋯/two/three/four $ cd five/
+#+END_SRC
+
+Not in $HOME:
+
+#+BEGIN_SRC bash
+/ $ cd one/
+/one $ cd two/
+/one/two $ cd three/
+⋯/one/two/three $ cd four/
+⋯/two/three/four $ cd five/
+#+END_SRC
+
+As a bonus, the separator can be configured, for example it could be = > =
+
+#+BEGIN_SRC bash
+~ $ cd one/
+~ > one $ cd two/
+~ > one > two $ cd three/
+⋯ > one > two > three $ cd four/
+⋯ > two > three > four $ cd five/
+#+END_SRC
+
+Plus, with some minor modifications, I got the function working with powerline
+symbols for my [promptline.vim][1] plugin:
+
+{% img /images/promptline_cwd.png %}
+
+*** The function itself
+
+Hopefully it would be useful to someone else. I certainly learned a lot writing
+(and re-writing) it. Enjoy!
+
+#+BEGIN_SRC bash
+function truncated_cwd {
+  # dir_limit and truncation can be configured
+  local dir_limit="3"
+  local truncation="⋯"
+
+  local first_char
+  local part_count=0
+  local formatted_cwd=""
+  local dir_sep=" | "
+
+  local cwd="${PWD/#$HOME/~}"
+
+  # get first char of the path, i.e. tilde or slash
+  [[ -n ${ZSH_VERSION-} ]] && first_char=$cwd[1,1] || first_char=${cwd::1}
+
+  # remove leading tilde
+  cwd="${cwd#\~}"
+
+  while [[ "$cwd" == */* && "$cwd" != "/" ]]; do
+    # pop off last part of cwd
+    local part="${cwd##*/}"
+    cwd="${cwd%/*}"
+
+    formatted_cwd="$dir_sep$part$formatted_cwd"
+    part_count=$((part_count+1))
+
+    [[ $part_count -eq $dir_limit ]] && first_char="$truncation" && break
+  done
+
+  [[ "$formatted_cwd" != $first_char* ]] && formatted_cwd="$first_char$formatted_cwd"
+  printf "%s" "$formatted_cwd"
+}
+#+END_SRC
+
+There are a few ways to get the function in the prompt, this is probably the
+simplest one: 
+
+#+BEGIN_SRC bash
+PS1='$(truncated_cwd) \$ '
+#+END_SRC
+
+[1]: https://github.com/edkolev/promptline.vim
+
+
+# Local Variables:
+# eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
+# End:

@@ -1,0 +1,79 @@
+baseURL = "http://evgeni.io"
+title = "Personal blog site"
+copyright = ""
+
+theme = "minimo"
+
+disqusShortname = "edkolev"
+googleAnalytics = ""
+
+Paginate = 5
+preserveTaxonomyNames = true
+
+enableRobotsTXT = true
+
+pygmentsCodefences = true
+
+defaultContentLanguage = "en"
+
+[params.info]
+description = "Personal blog of Evgeni Kolev."
+title404 = "Nothing's here"
+
+[params.assets]
+favicon = "favicon.ico"
+customCSS = []
+customJS = []
+gopher = "" # used in 404 template ( Generator: https://gopherize.me )
+
+[params.copyright]
+prefix = ""
+holder = "Evgeni Kolev"
+startYear = "2014"
+suffix = ""
+
+[params.settings]
+# date & time format: https://golang.org/pkg/time/
+dateFormat = "Jan 02, 2006"
+listDateFormat = "Jan 02, 2006"
+hideEntryNavigation = ["page"] # boolean / array of sections
+recentPostsLength = 4
+hideSocialMenu = false
+showReadingTime = false
+noTermCloudShuffle = false
+
+[params.opengraph.facebook]
+admins = [] # array of Facebook IDs
+appID = ""
+pageID = ""
+
+[params.opengraph.twitter]
+page = "" # Twitter page username
+
+[params.seo]
+# Title Separator: - – — · • * ⋆ | ~ « » < >
+titleSeparator = "•"
+
+[params.social]
+github = "edkolev"
+email = "evgenysw@gmail.com"
+
+[params.social.config]
+platforms = ["email","github"]
+
+[taxonomies]
+author = "Evgeni Kolev"
+category = "categories"
+tag = "tags"
+
+[permalinks]
+page = "/:slug/"
+
+[[menu.main]]
+name = "HOME"
+weight = -10
+identifier = "repository"
+url = "/"
+
+[blackfriday]
+hrefTargetBlank = true
