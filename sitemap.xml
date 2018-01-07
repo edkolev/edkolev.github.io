@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://evgeni.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/posts/reversable-ex-only-command/</loc>
+    <lastmod>2017-09-22T00:00:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/posts/travis-for-emacs-packages/</loc>
+    <lastmod>2017-09-10T00:00:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/posts/why-i-switched-to-emacs/</loc>
+    <lastmod>2017-09-08T00:00:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</loc>
+    <lastmod>2017-12-27T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/tags/bash/</loc>
+    <lastmod>2017-12-27T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/evgeni-kolev/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/page/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/</loc>
+    <lastmod>2017-09-22T00:00:00+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/posts/</loc>
+    <lastmod>2017-09-22T00:00:00+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/categories/posts/</loc>
+    <lastmod>2017-09-22T00:00:00+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/tags/prompt/</loc>
+    <lastmod>2017-12-27T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/tags/shell/</loc>
+    <lastmod>2017-12-27T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/tags/</loc>
+    <lastmod>2017-12-27T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://evgeni.io/tags/zsh/</loc>
+    <lastmod>2017-12-27T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Personal blog site</title>
+    <link>http://evgeni.io/posts/</link>
+    <description>Recent content in Posts on Personal blog site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 22 Sep 2017 00:00:00 +0300</lastBuildDate>
+    
+	<atom:link href="http://evgeni.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Make :only ex command reversible</title>
+      <link>http://evgeni.io/posts/reversable-ex-only-command/</link>
+      <pubDate>Fri, 22 Sep 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://evgeni.io/posts/reversable-ex-only-command/</guid>
+      <description>The :only ex command is one of my most used ones. Here&amp;rsquo;s how it can be tweaked so that it doesn&amp;rsquo;t only (pun intended) hide all the other windows, but it restores them when re-executed. it You can think of it as a zoom/un-zoom command.
+(use-package zygospore :ensure t :commands zygospore-toggle-delete-other-windows :init (evil-ex-define-cmd &amp;#34;only&amp;#34; &amp;#39;zygospore-toggle-delete-other-windows)) The above snippet uses the zygospore package, which is but a thin wrapper around emacs core functionality.</description>
+    </item>
+    
+    <item>
+      <title>Travis CI integration for emacs packages</title>
+      <link>http://evgeni.io/posts/travis-for-emacs-packages/</link>
+      <pubDate>Sun, 10 Sep 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://evgeni.io/posts/travis-for-emacs-packages/</guid>
+      <description>This post will show how to add simple make-based testing support for running automated emacs `ert` tests.
+The following utilities will be available on the development machine:
+ `make update` will install the development dependencies `make compile` will compile the .el files `make test` will run the `ert` tests `make clean` will remove the compiled files  The Travis build will fail with an error when:
+ a compilation warning or error occurs an automated test fails  This will be the resulting directory structure, where `.</description>
+    </item>
+    
+    <item>
+      <title>Why I switched to Emacs</title>
+      <link>http://evgeni.io/posts/why-i-switched-to-emacs/</link>
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://evgeni.io/posts/why-i-switched-to-emacs/</guid>
+      <description>TL;DR This January I stopped using vim after years of sharpening my vim setup because I couldn&amp;rsquo;t understand this very commit.
+The &amp;ldquo;reason&amp;rdquo; In my mother tongue there are two different words for &amp;ldquo;reason&amp;rdquo; with significant differences in their meaning. The first one &amp;ldquo;причина&amp;rdquo;, is used to describe an event or more commonly, a series of events which lead to what usually turns out to be a bad situation. The other one &amp;ldquo;повод&amp;rdquo;, describes the very last event, the final straw which lead to the event.</description>
+    </item>
+    
+    <item>
+      <title>Prompt working directory</title>
+      <link>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</link>
+      <pubDate>Wed, 27 Dec 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
+      <description>TL;DR Shorten ~/very/deep/down/the/rabbit/hole to ⋯/the/rabbit/hole in prompt.
+If you&amp;rsquo;re staring at a shell prompt a few hours every day, you might as well try to modify the prompt to better suit your needs. Some people like a minimalistic prompt with nothing but the working dir and a dollar sign ~ $. Others get an enormous 256-color multi-line beast holding information about the kernel version, battery status, daily horoscope and what not.</description>
+    </item>
+    
+  </channel>
+</rss>

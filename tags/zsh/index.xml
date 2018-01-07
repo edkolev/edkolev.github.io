@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zsh on Personal blog site</title>
+    <link>http://evgeni.io/tags/zsh/</link>
+    <description>Recent content in Zsh on Personal blog site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 27 Dec 2017 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="http://evgeni.io/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Prompt working directory</title>
+      <link>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</link>
+      <pubDate>Wed, 27 Dec 2017 00:00:00 +0200</pubDate>
+      
+      <guid>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
+      <description>TL;DR Shorten ~/very/deep/down/the/rabbit/hole to ⋯/the/rabbit/hole in prompt.
+If you&amp;rsquo;re staring at a shell prompt a few hours every day, you might as well try to modify the prompt to better suit your needs. Some people like a minimalistic prompt with nothing but the working dir and a dollar sign ~ $. Others get an enormous 256-color multi-line beast holding information about the kernel version, battery status, daily horoscope and what not.</description>
+    </item>
+    
+  </channel>
+</rss>
