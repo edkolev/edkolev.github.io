@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -euo pipefail
+
 cd "$(dirname "$0")"
 
 if [[ $(git status -s) ]]; then
@@ -23,4 +25,9 @@ echo "Generating site"
 hugo
 
 echo "Updating master branch"
-cd public && git add --all && git commit -m "Publishing (publish.sh)"
+cd public
+git add --all
+git commit -m "Publishing (publish.sh)"
+
+echo "Pushing master branch"
+git push
