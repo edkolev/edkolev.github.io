@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='using use-package'>
+
+<meta property='og:title' content='Quick Start emacs with evil • Personal blog site'>
+<meta property='og:description' content='using use-package'>
+<meta property='og:url' content='http://evgeni.io/posts/quick-start-evil-mode/'>
+<meta property='og:site_name' content='Personal blog site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2018-01-13T00:00:00&#43;02:00'/><meta property='article:modified_time' content='2018-01-13T00:00:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Quick Start emacs with evil • Personal blog site</title>
+  <link rel='canonical' href='http://evgeni.io/posts/quick-start-evil-mode/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.c54db339.css'>
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='/'>HOME</a>
+    </li>
+  <li>
+      <a href='/about/'>About</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>Personal blog site</p>
+          
+          <p class='site-description subtitle'>Personal blog of Evgeni Kolev.</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Quick Start emacs with evil</h1>
+      
+<p class='subtitle'>using use-package</p>
+
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2018-01-13T00:00:00&#43;02:00'>Jan 13, 2018</time>
+</span>
+
+  
+  
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  <p>This post is intended to present a minimal example of setting up emacs
+with evil as well as a few evil plugins.</p>
+
+<p>The emacs ecosystem is constantly changing, and evil and its plugins,
+being part of that ecosystem, are changing as well. Hence, the snippet
+below will be updated as I see fit.</p>
+
+<p>Care is taken to ensure the evil packages are lazy-loaded.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="color:#75715e">;; load package manager, add the Melpa package registry</span>
+(require <span style="color:#e6db74">&#39;package</span>)
+(add-to-list <span style="color:#e6db74">&#39;package-archives</span> <span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;melpa&#34;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;https://melpa.org/packages/&#34;</span>) <span style="color:#66d9ef">t</span>)
+(package-initialize)
+
+<span style="color:#75715e">;; bootstrap use-package</span>
+(unless (package-installed-p <span style="color:#e6db74">&#39;use-package</span>)
+  (package-refresh-contents)
+  (package-install <span style="color:#e6db74">&#39;use-package</span>))
+(require <span style="color:#e6db74">&#39;use-package</span>)
+
+(use-package evil
+  :ensure <span style="color:#66d9ef">t</span>
+  :defer <span style="color:#ae81ff">.1</span> <span style="color:#75715e">;; don&#39;t block emacs when starting, load evil immediately after startup</span>
+  :init
+  (setq evil-want-integration <span style="color:#66d9ef">nil</span>) <span style="color:#75715e">;; required by evil-collection</span>
+  (setq evil-search-module <span style="color:#e6db74">&#39;evil-search</span>)
+  (setq evil-ex-complete-emacs-commands <span style="color:#66d9ef">nil</span>)
+  (setq evil-vsplit-window-right <span style="color:#66d9ef">t</span>) <span style="color:#75715e">;; like vim&#39;s &#39;splitright&#39;</span>
+  (setq evil-split-window-below <span style="color:#66d9ef">t</span>) <span style="color:#75715e">;; like vim&#39;s &#39;splitbelow&#39;</span>
+  (setq evil-shift-round <span style="color:#66d9ef">nil</span>)
+  (setq evil-want-C-u-scroll <span style="color:#66d9ef">t</span>)
+  :config
+  (evil-mode)
+
+  <span style="color:#75715e">;; vim-like keybindings everywhere in emacs</span>
+  (use-package evil-collection
+    :after evil
+    :ensure <span style="color:#66d9ef">t</span>
+    :config
+    (evil-collection-init))
+
+  <span style="color:#75715e">;; gl and gL operators, like vim-lion</span>
+  (use-package evil-lion
+    :ensure <span style="color:#66d9ef">t</span>
+    :bind (:map evil-normal-state-map
+                (<span style="color:#e6db74">&#34;g l &#34;</span> <span style="color:#f92672">.</span> evil-lion-left)
+                (<span style="color:#e6db74">&#34;g L &#34;</span> <span style="color:#f92672">.</span> evil-lion-right)
+                :map evil-visual-state-map
+                (<span style="color:#e6db74">&#34;g l &#34;</span> <span style="color:#f92672">.</span> evil-lion-left)
+                (<span style="color:#e6db74">&#34;g L &#34;</span> <span style="color:#f92672">.</span> evil-lion-right)))
+
+  <span style="color:#75715e">;; gc operator, like vim-commentary</span>
+  (use-package evil-commentary
+    :ensure <span style="color:#66d9ef">t</span>
+    :bind (:map evil-normal-state-map
+                (<span style="color:#e6db74">&#34;gc&#34;</span> <span style="color:#f92672">.</span> evil-commentary)))
+
+  <span style="color:#75715e">;; gx operator, like vim-exchange</span>
+  <span style="color:#75715e">;; NOTE using cx like vim-exchange is possible but not as straightforward</span>
+  (use-package evil-exchange
+    :ensure <span style="color:#66d9ef">t</span>
+    :bind (:map evil-normal-state-map
+                (<span style="color:#e6db74">&#34;gx&#34;</span> <span style="color:#f92672">.</span> evil-exchange)
+                (<span style="color:#e6db74">&#34;gX&#34;</span> <span style="color:#f92672">.</span> evil-exchange-cancel)))
+
+  <span style="color:#75715e">;; gr operator, like vim&#39;s ReplaceWithRegister</span>
+  (use-package evil-replace-with-register
+    :ensure <span style="color:#66d9ef">t</span>
+    :bind (:map evil-normal-state-map
+                (<span style="color:#e6db74">&#34;gr&#34;</span> <span style="color:#f92672">.</span> evil-replace-with-register)
+                :map evil-visual-state-map
+                (<span style="color:#e6db74">&#34;gr&#34;</span> <span style="color:#f92672">.</span> evil-replace-with-register)))
+
+  <span style="color:#75715e">;; * operator in vusual mode</span>
+  (use-package evil-visualstar
+    :ensure <span style="color:#66d9ef">t</span>
+    :bind (:map evil-visual-state-map
+                (<span style="color:#e6db74">&#34;*&#34;</span> <span style="color:#f92672">.</span> evil-visualstar/begin-search-forward)
+                (<span style="color:#e6db74">&#34;#&#34;</span> <span style="color:#f92672">.</span> evil-visualstar/begin-search-backward)))
+
+  <span style="color:#75715e">;; ex commands, which a vim user is likely to be familiar with</span>
+  (use-package evil-expat
+    :ensure <span style="color:#66d9ef">t</span>
+    :defer <span style="color:#66d9ef">t</span>)
+
+  <span style="color:#75715e">;; visual hints while editing</span>
+  (use-package evil-goggles
+    :ensure <span style="color:#66d9ef">t</span>
+    :config
+    (evil-goggles-use-diff-faces)
+    (evil-goggles-mode))
+
+  <span style="color:#75715e">;; like vim-surround</span>
+  (use-package evil-surround
+    :ensure <span style="color:#66d9ef">t</span>
+    :commands
+    (evil-surround-edit
+     evil-Surround-edit
+     evil-surround-region
+     evil-Surround-region)
+    :init
+    (evil-define-key <span style="color:#e6db74">&#39;operator</span> global-map <span style="color:#e6db74">&#34;s&#34;</span> <span style="color:#e6db74">&#39;evil-surround-edit</span>)
+    (evil-define-key <span style="color:#e6db74">&#39;operator</span> global-map <span style="color:#e6db74">&#34;S&#34;</span> <span style="color:#e6db74">&#39;evil-Surround-edit</span>)
+    (evil-define-key <span style="color:#e6db74">&#39;visual</span> global-map <span style="color:#e6db74">&#34;S&#34;</span> <span style="color:#e6db74">&#39;evil-surround-region</span>)
+    (evil-define-key <span style="color:#e6db74">&#39;visual</span> global-map <span style="color:#e6db74">&#34;gS&#34;</span> <span style="color:#e6db74">&#39;evil-Surround-region</span>))
+
+  (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;Loading evil-mode...done&#34;</span>))</code></pre></div>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='/categories/posts'>Posts</a></div>
+
+  </div>
+</footer>
+
+
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='/posts/reversable-ex-only-command/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Make :only ex command reversible</a>
+    </div></div>
+</nav>
+
+  
+<div class='comments-container'>
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "edkolev" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='mailto:evgenysw@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://github.com/edkolev' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2014-2018 Evgeni Kolev 
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='/assets/js/main.5871befd.js'></script></body>
+
+</html>
+

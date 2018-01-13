@@ -5,10 +5,22 @@
     <link>http://evgeni.io/posts/</link>
     <description>Recent content in Posts on Personal blog site</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 22 Sep 2017 00:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jan 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://evgeni.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Quick Start emacs with evil</title>
+      <link>http://evgeni.io/posts/quick-start-evil-mode/</link>
+      <pubDate>Sat, 13 Jan 2018 00:00:00 +0200</pubDate>
+      
+      <guid>http://evgeni.io/posts/quick-start-evil-mode/</guid>
+      <description>This post is intended to present a minimal example of setting up emacs with evil as well as a few evil plugins.
+The emacs ecosystem is constantly changing, and evil and its plugins, being part of that ecosystem, are changing as well. Hence, the snippet below will be updated as I see fit.
+Care is taken to ensure the evil packages are lazy-loaded.
+;; load package manager, add the Melpa package registry (require &amp;#39;package) (add-to-list &amp;#39;package-archives &amp;#39;(&amp;#34;melpa&amp;#34; .</description>
+    </item>
     
     <item>
       <title>Make :only ex command reversible</title>
