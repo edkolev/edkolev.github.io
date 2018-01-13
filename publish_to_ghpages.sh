@@ -23,6 +23,7 @@ rm -rf public/*
 
 echo "Generating site"
 hugo
+echo 'evgeni.io' > public/CNAME
 
 echo "Updating master branch"
 cd public
