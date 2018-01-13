@@ -72,8 +72,14 @@ page = "/:slug/"
 [[menu.main]]
 name = "HOME"
 weight = -10
-identifier = "repository"
+identifier = "home"
 url = "/"
+
+[[menu.main]]
+name = "Posts"
+weight = -9
+identifier = "posts"
+url = "/categories/posts/"
 
 [blackfriday]
 hrefTargetBlank = true

@@ -18,6 +18,8 @@ whatever I’m interesed in at the time of writing.
 
 Content on this blog is reusabe under CC BY-SA 4.0
 
+The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tree/source][github]]
+
 * Posts                                                              :@posts:
 
 ** Quick Start emacs with evil
