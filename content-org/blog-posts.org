@@ -452,7 +452,7 @@ un-see it.
 ** Prompt working directory                           :bash:zsh:shell:prompt:
 :PROPERTIES:
 :EXPORT_FILE_NAME: 2014-01-26-bash-directory-truncation
-:EXPORT_DATE: 2017-12-27
+:EXPORT_DATE: 2014-01-26
 :EXPORT_DESCRIPTION: shorten ~/down/the/rabbit/hole to ⋯/the/rabbit/hole in prompt
 :END:
 
