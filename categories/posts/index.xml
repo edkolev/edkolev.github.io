@@ -57,7 +57,7 @@ The &amp;ldquo;reason&amp;rdquo; In my mother tongue there are two different wor
     <item>
       <title>Prompt working directory</title>
       <link>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</link>
-      <pubDate>Wed, 27 Dec 2017 00:00:00 +0200</pubDate>
+      <pubDate>Sun, 26 Jan 2014 00:00:00 +0200</pubDate>
       
       <guid>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
       <description>TL;DR Shorten ~/very/deep/down/the/rabbit/hole to ⋯/the/rabbit/hole in prompt.

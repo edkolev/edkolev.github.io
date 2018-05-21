@@ -167,16 +167,16 @@ script:
 <p>The Makefile is used for nothing but shortcuts to running the tasks.</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">update</span><span style="color:#f92672">:</span>
-        emacs -batch -l test/make-update.el
+    emacs -batch -l test/make-update.el
 
 <span style="color:#a6e22e">compile</span><span style="color:#f92672">:</span> clean
-        emacs -batch -l test/elpa.el -l test/make-compile.el
+    emacs -batch -l test/elpa.el -l test/make-compile.el
 
 <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span>
-        emacs -batch -l test/elpa.el -l test/make-test.el
+    emacs -batch -l test/elpa.el -l test/make-test.el
 
 <span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
-        rm -f *.elc
+    rm -f *.elc
 
 <span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> update compile test clean
 </code></pre></div>
