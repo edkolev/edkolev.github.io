@@ -22,6 +22,76 @@ The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tre
 
 * Posts                                                              :@posts:
 
+** TODO Thoughts on all-remote
+:PROPERTIES:
+:EXPORT_FILE_NAME: thoughts-on-all-remote-companies
+:EXPORT_DATE: 2018-12-10
+:EXPORT_DESCRIPTION: fake
+:END:
+
+Working in an all-remote company has always been an interesting
+thought exercise to me. Would it work for me? Would it work for the
+company? At what cost?
+
+*** Pluses
+
+Let's settle on the positives first, starting with the big one: one
+could work with his pajamas all day! While this might not sound
+serious, it implies a couple of other subtleties - the office is where
+you when it to be. You want to work from you couch? Sure. How about
+that cosy coffee shop nearby? Of course. Maybe the coffee shop which
+is right next to the park, and now that the park is mentioned, it
+doesn't sound as such a bad office idea either. Definitely! And maybe
+occasionally you would just go to the company office and meet up with
+the people you work with because you are a human being, just like
+them, and you do feel the occasional need to socialize. Hum.. sorry,
+this won't work - "all-remote", remember? There isn't such a thing as
+a company office when doing all-remote. Not only that, but the chances
+of too many people working in the same time zone as you are slim...
+
+Let's get back to the positives, though, this is the =pluses= section!
+
+Undoubtedly, your company would have a huge pool of engineers to chose
+from. How big? People from all over the world! That big! That's a
+definite win for you when considering whether to join such a company -
+you won't ever have to worry about whether relocating makes sense for
+you in this phase of your life.
+
+Now that joining such a company is mentioned - hiring is likely to be
+"special" - expect an intense series of interviews, each testing your
+ability to work in a remote team. You might get chat-only interviews
+since chat will likely be the most widely and commonly used
+communication channel for the whole company. It makes sense to have
+all your interviews online, sending text messages only. No voice, no
+video.
+
+*** Negatives
+
+Working by yourself for long periods of time seems like the most
+obvious challenge. I guess for myself it would be no more than a month
+before I feel a need for in-person human interactions. Nevertheless,
+this need varies widely between people. I can easily imagine someone
+who never really start craving a face-to-face dialogue. Your mileage
+may vary, just be careful not to fall into the trap that is working
+with your pajamas, all day, every day...
+
+*** Conclusion
+
+For the company, having a global pool of talent is an obvious win.
+Nevertheless, special care has to be taken when figuring out how many
+people in the company will be remote and how many - in an office. I
+don't believe you can mix and match here, so the only viable, long
+term option in my (limited, biased) opinion, is all-remote. This post
+is about all-remote companies so I won't bother going into details why
+a hybrid model wouldn't be easy, if at all, to pull.
+
+For the individual, working with people from different parts of the
+world, different time zones, seems like a lot of fun. Until you need
+to have an all-hands meeting, that is. If you're slightly lucky
+however, you could easily have top-notch colleagues from all around
+Earth, and be able to learn a lot from them. And all from the comfort
+of your own couch!
+
 ** Quick Start emacs with evil
 :PROPERTIES:
 :EXPORT_FILE_NAME: quick-start-evil-mode
