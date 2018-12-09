@@ -629,7 +629,8 @@ PS1='$(truncated_cwd) \$ '
 
 [1]: https://github.com/edkolev/promptline.vim
 
-
+* Footnotes
+* COMMENT Local Variables                          :ARCHIVE:
 # Local Variables:
-# eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
+# org-hugo-auto-export-on-save: t
 # End:
