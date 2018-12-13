@@ -23,3 +23,5 @@ git commit -m "Publishing `date`"
 
 echo "Pushing master branch"
 git push origin master
+
+echo "Published"
