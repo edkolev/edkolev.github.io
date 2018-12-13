@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Shell on Personal blog site</title>
+    <title>shell on Personal blog site</title>
     <link>http://evgeni.io/tags/shell/</link>
-    <description>Recent content in Shell on Personal blog site</description>
+    <description>Recent content in shell on Personal blog site</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 26 Jan 2014 00:00:00 +0200</lastBuildDate>
     

@@ -5,7 +5,7 @@
     <link>http://evgeni.io/</link>
     <description>Recent content on Personal blog site</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 13 Jan 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://evgeni.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -22,6 +22,16 @@ The source of this site is on github</description>
     </item>
     
     <item>
+      <title>Thoughts on all-remote</title>
+      <link>http://evgeni.io/posts/thoughts-on-all-remote-companies/</link>
+      <pubDate>Mon, 10 Dec 2018 00:00:00 +0200</pubDate>
+      
+      <guid>http://evgeni.io/posts/thoughts-on-all-remote-companies/</guid>
+      <description>Working in an all-remote company has always been an interesting thought exercise to me. Would it work for me? Would it work for the company? At what cost?
+Pluses Let&amp;rsquo;s settle on the positives first, starting with the big one: one could work with his pajamas all day! While this might not sound serious, it implies a couple of other subtleties - the office is where you when it to be.</description>
+    </item>
+    
+    <item>
       <title>Quick Start emacs with evil</title>
       <link>http://evgeni.io/posts/quick-start-evil-mode/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0200</pubDate>
@@ -34,7 +44,7 @@ Care is taken to ensure the evil packages are lazy-loaded.
     </item>
     
     <item>
-      <title>Make :only ex command reversible</title>
+      <title>Reversible :only ex command</title>
       <link>http://evgeni.io/posts/reversable-ex-only-command/</link>
       <pubDate>Fri, 22 Sep 2017 00:00:00 +0300</pubDate>
       
@@ -44,7 +54,7 @@ Care is taken to ensure the evil packages are lazy-loaded.
     </item>
     
     <item>
-      <title>Travis CI integration for emacs packages</title>
+      <title>Travis CI for emacs packages</title>
       <link>http://evgeni.io/posts/travis-for-emacs-packages/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0300</pubDate>
       

@@ -5,13 +5,12 @@
     <link>http://evgeni.io/tags/</link>
     <description>Recent content in Tags on Personal blog site</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 26 Jan 2014 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://evgeni.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Bash</title>
+      <title>bash</title>
       <link>http://evgeni.io/tags/bash/</link>
       <pubDate>Sun, 26 Jan 2014 00:00:00 +0200</pubDate>
       
@@ -20,7 +19,16 @@
     </item>
     
     <item>
-      <title>Prompt</title>
+      <title>emacs</title>
+      <link>http://evgeni.io/tags/emacs/</link>
+      <pubDate>Sat, 13 Jan 2018 00:00:00 +0200</pubDate>
+      
+      <guid>http://evgeni.io/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prompt</title>
       <link>http://evgeni.io/tags/prompt/</link>
       <pubDate>Sun, 26 Jan 2014 00:00:00 +0200</pubDate>
       
@@ -29,7 +37,7 @@
     </item>
     
     <item>
-      <title>Shell</title>
+      <title>shell</title>
       <link>http://evgeni.io/tags/shell/</link>
       <pubDate>Sun, 26 Jan 2014 00:00:00 +0200</pubDate>
       
@@ -38,7 +46,16 @@
     </item>
     
     <item>
-      <title>Zsh</title>
+      <title>work</title>
+      <link>http://evgeni.io/tags/work/</link>
+      <pubDate>Mon, 10 Dec 2018 00:00:00 +0200</pubDate>
+      
+      <guid>http://evgeni.io/tags/work/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zsh</title>
       <link>http://evgeni.io/tags/zsh/</link>
       <pubDate>Sun, 26 Jan 2014 00:00:00 +0200</pubDate>
       

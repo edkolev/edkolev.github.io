@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Personal blog site</title>
+    <title>posts on Personal blog site</title>
     <link>http://evgeni.io/categories/posts/</link>
-    <description>Recent content in Posts on Personal blog site</description>
+    <description>Recent content in posts on Personal blog site</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 13 Jan 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://evgeni.io/categories/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Thoughts on all-remote</title>
+      <link>http://evgeni.io/posts/thoughts-on-all-remote-companies/</link>
+      <pubDate>Mon, 10 Dec 2018 00:00:00 +0200</pubDate>
+      
+      <guid>http://evgeni.io/posts/thoughts-on-all-remote-companies/</guid>
+      <description>Working in an all-remote company has always been an interesting thought exercise to me. Would it work for me? Would it work for the company? At what cost?
+Pluses Let&amp;rsquo;s settle on the positives first, starting with the big one: one could work with his pajamas all day! While this might not sound serious, it implies a couple of other subtleties - the office is where you when it to be.</description>
+    </item>
     
     <item>
       <title>Quick Start emacs with evil</title>
@@ -23,7 +33,7 @@ Care is taken to ensure the evil packages are lazy-loaded.
     </item>
     
     <item>
-      <title>Make :only ex command reversible</title>
+      <title>Reversible :only ex command</title>
       <link>http://evgeni.io/posts/reversable-ex-only-command/</link>
       <pubDate>Fri, 22 Sep 2017 00:00:00 +0300</pubDate>
       
@@ -33,7 +43,7 @@ Care is taken to ensure the evil packages are lazy-loaded.
     </item>
     
     <item>
-      <title>Travis CI integration for emacs packages</title>
+      <title>Travis CI for emacs packages</title>
       <link>http://evgeni.io/posts/travis-for-emacs-packages/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0300</pubDate>
       
