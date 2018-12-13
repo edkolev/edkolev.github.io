@@ -23,7 +23,7 @@ Care is taken to ensure the evil packages are lazy-loaded.
     </item>
     
     <item>
-      <title>Reversible :only ex command</title>
+      <title>Make :only ex command reversible</title>
       <link>http://evgeni.io/posts/reversable-ex-only-command/</link>
       <pubDate>Fri, 22 Sep 2017 00:00:00 +0300</pubDate>
       
@@ -33,7 +33,7 @@ Care is taken to ensure the evil packages are lazy-loaded.
     </item>
     
     <item>
-      <title>Travis CI for emacs packages</title>
+      <title>Travis CI integration for emacs packages</title>
       <link>http://evgeni.io/posts/travis-for-emacs-packages/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0300</pubDate>
       
