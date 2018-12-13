@@ -26,7 +26,6 @@ The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tre
 :PROPERTIES:
 :EXPORT_FILE_NAME: thoughts-on-all-remote-companies
 :EXPORT_DATE: 2018-12-10
-:EXPORT_DESCRIPTION: fake
 :END:
 
 Working in an all-remote company has always been an interesting
