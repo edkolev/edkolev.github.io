@@ -22,7 +22,7 @@ The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tre
 
 * Posts                                                              :@posts:
 
-** Thoughts on all-remote
+** Thoughts on all-remote                                             :work:
 :PROPERTIES:
 :EXPORT_FILE_NAME: thoughts-on-all-remote-companies
 :EXPORT_DATE: 2018-12-10
@@ -92,7 +92,7 @@ however, you could easily have top-notch colleagues from all around
 Earth, and be able to learn a lot from them. And all from the comfort
 of your own couch!
 
-** Quick Start emacs with evil
+** Quick Start emacs with evil                                       :emacs:
 :PROPERTIES:
 :EXPORT_FILE_NAME: quick-start-evil-mode
 :EXPORT_DATE: 2018-01-13
@@ -213,7 +213,7 @@ Care is taken to ensure the evil packages are lazy-loaded.
 # eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
 # End:
   
-** Make :only ex command reversible
+** Make :only ex command reversible                                  :emacs:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reversable-ex-only-command
 :EXPORT_DATE: 2017-09-22
@@ -244,7 +244,7 @@ an alias then?
 (evil-ex-define-cmd "Only" "only")
 #+END_SRC
 
-** Travis CI integration for emacs packages
+** Travis CI integration for emacs packages                          :emacs:
 :PROPERTIES:
 :EXPORT_FILE_NAME: travis-for-emacs-packages
 :EXPORT_DATE: 2017-09-10
@@ -463,7 +463,7 @@ See also:
   can be used to run the tests against multiple versions of emacs, not
   sure if it can be achieved without pulling in cask as a dependency
 
-** Why I switched to Emacs
+** Why I switched to Emacs                                           :emacs:
 :PROPERTIES:
 :EXPORT_FILE_NAME: why-i-switched-to-emacs
 :EXPORT_DATE: 2017-09-08
