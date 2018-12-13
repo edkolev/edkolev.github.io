@@ -22,7 +22,7 @@ The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tre
 
 * Posts                                                              :@posts:
 
-** TODO Thoughts on all-remote
+** Thoughts on all-remote
 :PROPERTIES:
 :EXPORT_FILE_NAME: thoughts-on-all-remote-companies
 :EXPORT_DATE: 2018-12-10
