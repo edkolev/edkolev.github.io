@@ -698,8 +698,3 @@ PS1='$(truncated_cwd) \$ '
 
 [1]: https://github.com/edkolev/promptline.vim
 
-* Footnotes
-* COMMENT Local Variables                          :ARCHIVE:
-# Local Variables:
-# org-hugo-auto-export-on-save: t
-# End:
