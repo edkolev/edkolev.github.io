@@ -32,5 +32,7 @@ cd public
 git add --all
 git commit -m "Publishing `date`"
 
-echo "Pushing master branch, run this:"
-echo git push origin master
+echo "Pushing master branch"
+git push origin master
+
+echo "Done."
