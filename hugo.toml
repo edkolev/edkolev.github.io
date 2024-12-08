@@ -99,3 +99,15 @@ hrefTargetBlank = true
 
 [markup.goldmark.renderer]
 unsafe = true
+
+[[params.navlinks]]
+name = "about/"
+url = "about/"
+
+[[params.navlinks]]
+name = "posts/"
+url = "posts/"
+
+[[params.navlinks]]
+name = "home/"
+url = "/"
