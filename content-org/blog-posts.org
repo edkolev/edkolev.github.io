@@ -1,9 +1,9 @@
-#+HUGO_BASE_DIR: ../
-#+HUGO_SECTION: posts
+#+hugo_base_dir: ../
+#+hugo_section: posts
 
-#+HUGO_WEIGHT: auto
-#+HUGO_AUTO_SET_LASTMOD: nil
-#+HUGO_CODE_FENCE: nil
+#+hugo_weight: auto
+#+hugo_auto_set_lastmod: nil
+#+hugo_code_fence: nil
 
 * About
 :PROPERTIES:
@@ -110,7 +110,7 @@ below will be updated as I see fit.
 
 Care is taken to ensure the evil packages are lazy-loaded.
 
-#+BEGIN_SRC
+#+begin_src
   ;; load package manager, add the Melpa package registry
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -209,7 +209,7 @@ Care is taken to ensure the evil packages are lazy-loaded.
       (evil-define-key 'visual global-map "gS" 'evil-Surround-region))
 
     (message "Loading evil-mode...done"))
-#+END_SRC
+#+end_src
 
 # Local Variables:
 # eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
@@ -229,13 +229,13 @@ as a zoom/un-zoom command.
 
 #+hugo: more
 
-#+BEGIN_SRC
+#+begin_src
 (use-package zygospore
   :ensure t
   :commands zygospore-toggle-delete-other-windows
   :init
   (evil-ex-define-cmd "only" 'zygospore-toggle-delete-other-windows))
-#+END_SRC
+#+end_src
 
 The above snippet uses the [[https://github.com/louiskottmann/zygospore.el][zygospore]] package, which is but a thin
 wrapper around emacs core functionality. Go ahead and check out its code.
@@ -244,9 +244,9 @@ I often enter =:On= instead of =:on= which results in a disruption of
 my flow with an unpleasant "Unknown command" message. Why not create
 an alias then?
 
-#+BEGIN_SRC
+#+begin_src
 (evil-ex-define-cmd "Only" "only")
-#+END_SRC
+#+end_src
 
 ** Travis CI integration for emacs packages                          :emacs:
 :PROPERTIES:
@@ -275,7 +275,7 @@ The Travis build will fail with an error when:
 This will be the resulting directory structure, where `<my-package>.el` is
 the hypothetical package we'd like to test:
 
-#+BEGIN_SRC
+#+begin_src
 .
 ├── .travis.yml         ;; Travis CI config
 ├── .elpa               ;; contains installed deps
@@ -287,7 +287,7 @@ the hypothetical package we'd like to test:
     ├── make-compile.el ;; compile *el files
     ├── make-test.el    ;; run automated tests
     └── make-update.el  ;; install dependencies
-#+END_SRC
+#+end_src
 
 These files have to be modified, the rest can be copied as is:
 
@@ -302,7 +302,7 @@ purpose, thus easy to tweak.
 
 This file is the entry point for Travis CI.
 
-#+BEGIN_SRC
+#+begin_src
 # .travis.yml
 sudo: true
 dist: precise
@@ -320,13 +320,13 @@ script:
   - make update
   - make compile
   - make test
-#+END_SRC
+#+end_src
 
 *** Makefile
 
 The Makefile is used for nothing but shortcuts to running the tasks.
 
-#+BEGIN_SRC
+#+begin_src
 update:
 	emacs -batch -l test/make-update.el
 
@@ -340,24 +340,24 @@ clean:
 	rm -f *.elc
 
 .PHONY: update compile test clean
-#+END_SRC
+#+end_src
 
 *** test/elpa.el 
 
 Initializes package.el.
 
-#+BEGIN_SRC
+#+begin_src
 (setq package-user-dir
       (expand-file-name (format ".elpa/%s/elpa" emacs-version)))
 (package-initialize)
 (add-to-list 'load-path default-directory)
-#+END_SRC
+#+end_src
 
 *** test/make-compile.el
 
 This file compiles `*.el` files in the package root directory.
 
-#+BEGIN_SRC
+#+begin_src
 ;;  bail out on compilation warnings and errors
 (setq byte-compile-error-on-warn t)
 (setq byte-compile--use-old-handlers nil)
@@ -367,13 +367,13 @@ This file compiles `*.el` files in the package root directory.
   (unless (byte-compile-file file)
     (kill-emacs 1)))
 
-#+END_SRC
+#+end_src
 
 *** test/make-test.el
 
 This file runs the tests in `tests/tests.el`.
 
-#+BEGIN_SRC
+#+begin_src
 (let* ((project-tests-file "tests.el")
        (current-directory (file-name-directory load-file-name))
        (project-test-path (expand-file-name "." current-directory))
@@ -388,7 +388,7 @@ This file runs the tests in `tests/tests.el`.
 
   ;; run the tests
   (ert-run-tests-batch-and-exit))
-#+END_SRC
+#+end_src
 
 *** test/make-update.el
 
@@ -398,7 +398,7 @@ The `dev-packages` variable should be modified per the package's
 needs. This example adds the `evil` and `evil-test-helpers` packages
 as dependencies for illustrative purpose.
 
-#+BEGIN_SRC
+#+begin_src
 ;; list of the all the dependencies, including the dev dependencies
 (defvar dev-packages '(evil evil-test-helpers))
 
@@ -427,7 +427,7 @@ as dependencies for illustrative purpose.
         (package-menu-execute t))
     (error
      (message "All packages up to date"))))
-#+END_SRC
+#+end_src
 
 *** test/tests.el
 
@@ -435,21 +435,21 @@ This file contains the unit tests for `my-package`, the package being
 tested. This example tests a hypothetical function
 `my-package-add-numers`.
 
-#+BEGIN_SRC
+#+begin_src
 (require 'ert)
 (require 'my-package)
 
 (ert-deftest sample-test ()
   (ert-info ("test function my-package-add-numers")
     (should (eq 3 (my-package-add-numers 1 2))
-#+END_SRC
+#+end_src
 
 *** .gitignore (optional)
 
-#+BEGIN_SRC
+#+begin_src
 .elpa/
 *.elc
-#+END_SRC
+#+end_src
 
 # Summary
 
@@ -563,7 +563,7 @@ dir is a sub dir of $HOME or not.
 
 Working dir is a subdir of $HOME:
 
-#+BEGIN_SRC
+#+begin_src
 ~ $ PROMPT_DIRTRIM=3
 ~ $ cd one/
 ~/one $ cd two/
@@ -571,7 +571,7 @@ Working dir is a subdir of $HOME:
 ~/one/two/three $ cd four/
 ~/one/two/three/four $ cd five/
 ~/.../three/four/five $
-#+END_SRC
+#+end_src
 
 This is useless to me:
 
@@ -581,7 +581,7 @@ This is useless to me:
 
 Working dir is not a subdir of $HOME:
 
-#+BEGIN_SRC
+#+begin_src
 ~ $ PROMPT_DIRTRIM=3
 / $ cd one/
 /one $ cd two/
@@ -589,7 +589,7 @@ Working dir is not a subdir of $HOME:
 /one/two/three $ cd four/
 .../two/three/four $ cd five/
 .../three/four/five $
-#+END_SRC
+#+end_src
 
 This is much better! ... or not:
 
@@ -610,9 +610,9 @@ one line of code:
 
 (Note that this is greatly simplified and doesn't handle any corner cases.)
 
-#+BEGIN_SRC
+#+begin_src
 PWD.split('/').slice(-3).join('/')
-#+END_SRC
+#+end_src
 
 How hard could it be to port this to bash (and zsh)?
 
@@ -627,33 +627,33 @@ coffee, I managed to achieve the desired result:
 
 In a subdir of $HOME:
 
-#+BEGIN_SRC
+#+begin_src
 ~ $ cd one/
 ~/one $ cd two/
 ~/one/two $ cd three/
 ⋯/one/two/three $ cd four/
 ⋯/two/three/four $ cd five/
-#+END_SRC
+#+end_src
 
 Not in $HOME:
 
-#+BEGIN_SRC
+#+begin_src
 / $ cd one/
 /one $ cd two/
 /one/two $ cd three/
 ⋯/one/two/three $ cd four/
 ⋯/two/three/four $ cd five/
-#+END_SRC
+#+end_src
 
 As a bonus, the separator can be configured, for example it could be = > =
 
-#+BEGIN_SRC
+#+begin_src
 ~ $ cd one/
 ~ > one $ cd two/
 ~ > one > two $ cd three/
 ⋯ > one > two > three $ cd four/
 ⋯ > two > three > four $ cd five/
-#+END_SRC
+#+end_src
 
 Plus, with some minor modifications, I got the function working with powerline
 symbols for my [promptline.vim][1] plugin:
@@ -665,7 +665,7 @@ symbols for my [promptline.vim][1] plugin:
 Hopefully it would be useful to someone else. I certainly learned a lot writing
 (and re-writing) it. Enjoy!
 
-#+BEGIN_SRC
+#+begin_src
 function truncated_cwd {
   # dir_limit and truncation can be configured
   local dir_limit="3"
@@ -698,14 +698,14 @@ function truncated_cwd {
   [[ "$formatted_cwd" != $first_char* ]] && formatted_cwd="$first_char$formatted_cwd"
   printf "%s" "$formatted_cwd"
 }
-#+END_SRC
+#+end_src
 
 There are a few ways to get the function in the prompt, this is probably the
 simplest one: 
 
-#+BEGIN_SRC
+#+begin_src
 PS1='$(truncated_cwd) \$ '
-#+END_SRC
+#+end_src
 
 [1]: https://github.com/edkolev/promptline.vim
 
