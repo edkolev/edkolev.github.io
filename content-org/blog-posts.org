@@ -537,8 +537,6 @@ un-see it.
 :EXPORT_DESCRIPTION: shorten ~/down/the/rabbit/hole to ⋯/the/rabbit/hole in prompt
 :END:
 
-*** TL;DR
-
 Shorten =~/very/deep/down/the/rabbit/hole= to =⋯/the/rabbit/hole= in
 prompt.
 
@@ -613,7 +611,7 @@ one line of code:
 
 (Note that this is greatly simplified and doesn't handle any corner cases.)
 
-#+BEGIN_SRC javascript
+#+BEGIN_SRC
 PWD.split('/').slice(-3).join('/')
 #+END_SRC
 
