@@ -10,7 +10,6 @@
 :EXPORT_FILE_NAME: about
 :EXPORT_HUGO_SECTION: page
 :EXPORT_HUGO_MENU: :menu main
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :comments false
 :END:
 
 My name is Evgeni, this is my personal blog where I write about

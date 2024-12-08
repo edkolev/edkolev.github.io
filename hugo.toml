@@ -1,10 +1,10 @@
 baseURL = "http://evgeni.io"
-title = "Personal blog site"
+title = "Personal blog"
 copyright = ""
 
 theme = "hugo-theme-console"
 
-disqusShortname = "edkolev"
+disqusShortname = ""
 googleAnalytics = ""
 
 Paginate = 5
