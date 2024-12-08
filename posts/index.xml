@@ -1,78 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Personal blog site</title>
+    <title>Posts on Personal blog</title>
     <link>http://evgeni.io/posts/</link>
-    <description>Recent content in Posts on Personal blog site</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0200</lastBuildDate>
-    
-	<atom:link href="http://evgeni.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <description>Recent content in Posts on Personal blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://evgeni.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Thoughts on all-remote</title>
       <link>http://evgeni.io/posts/thoughts-on-all-remote-companies/</link>
-      <pubDate>Mon, 10 Dec 2018 00:00:00 +0200</pubDate>
-      
+      <pubDate>Mon, 10 Dec 2018 00:00:00 +0000</pubDate>
       <guid>http://evgeni.io/posts/thoughts-on-all-remote-companies/</guid>
-      <description>Working in an all-remote company has always been an interesting thought exercise to me. Would it work for me? Would it work for the company? At what cost?
-Pluses Let&amp;rsquo;s settle on the positives first, starting with the big one: one could work with his pajamas all day! While this might not sound serious, it implies a couple of subtleties - the office is where you when it to be.</description>
+      <description>&lt;p&gt;Working in an all-remote company has always been an interesting&#xA;thought exercise to me. Would it work for me? Would it work for the&#xA;company? At what cost?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Quick Start emacs with evil</title>
       <link>http://evgeni.io/posts/quick-start-evil-mode/</link>
-      <pubDate>Sat, 13 Jan 2018 00:00:00 +0200</pubDate>
-      
+      <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
       <guid>http://evgeni.io/posts/quick-start-evil-mode/</guid>
-      <description>This post is intended to present a minimal example of setting up emacs with evil as well as a few evil plugins.
-The emacs ecosystem is constantly changing, and evil and its plugins, being part of that ecosystem, are changing as well. Hence, the snippet below will be updated as I see fit.
-Care is taken to ensure the evil packages are lazy-loaded.
-;; load package manager, add the Melpa package registry (require &amp;#39;package) (add-to-list &amp;#39;package-archives &amp;#39;(&amp;#34;melpa&amp;#34; .</description>
+      <description>&lt;p&gt;This post is intended to present a minimal example of setting up emacs&#xA;with evil as well as a few evil plugins.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Make :only ex command reversible</title>
       <link>http://evgeni.io/posts/reversable-ex-only-command/</link>
-      <pubDate>Fri, 22 Sep 2017 00:00:00 +0300</pubDate>
-      
+      <pubDate>Fri, 22 Sep 2017 00:00:00 +0000</pubDate>
       <guid>http://evgeni.io/posts/reversable-ex-only-command/</guid>
-      <description>The :only ex command is one of my most used ones. Here&amp;rsquo;s how it can be tweaked so that it doesn&amp;rsquo;t only (pun intended) hide all the other windows, but it restores them when re-executed. it You can think of it as a zoom/un-zoom command.
-(use-package zygospore :ensure t :commands zygospore-toggle-delete-other-windows :init (evil-ex-define-cmd &amp;#34;only&amp;#34; &amp;#39;zygospore-toggle-delete-other-windows)) The above snippet uses the zygospore package, which is but a thin wrapper around emacs core functionality.</description>
+      <description>&lt;p&gt;The &lt;code&gt;:only&lt;/code&gt; ex command is one of my most used ones. Here&amp;rsquo;s how it can&#xA;be tweaked so that it doesn&amp;rsquo;t only (pun intended) hide all the other&#xA;windows, but it restores them when re-executed. it You can think of it&#xA;as a zoom/un-zoom command.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Travis CI integration for emacs packages</title>
       <link>http://evgeni.io/posts/travis-for-emacs-packages/</link>
-      <pubDate>Sun, 10 Sep 2017 00:00:00 +0300</pubDate>
-      
+      <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       <guid>http://evgeni.io/posts/travis-for-emacs-packages/</guid>
-      <description>This post will show how to add simple make-based testing support for running automated emacs `ert` tests.
-The following utilities will be available on the development machine:
- `make update` will install the development dependencies `make compile` will compile the .el files `make test` will run the `ert` tests `make clean` will remove the compiled files  The Travis build will fail with an error when:
- a compilation warning or error occurs an automated test fails  This will be the resulting directory structure, where `.</description>
+      <description>&lt;p&gt;This post will show how to add simple make-based testing support for&#xA;running automated emacs `ert` tests.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Why I switched to Emacs</title>
       <link>http://evgeni.io/posts/why-i-switched-to-emacs/</link>
-      <pubDate>Fri, 08 Sep 2017 00:00:00 +0300</pubDate>
-      
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       <guid>http://evgeni.io/posts/why-i-switched-to-emacs/</guid>
-      <description>TL;DR This January I stopped using vim after years of sharpening my vim setup because I couldn&amp;rsquo;t understand this very commit.
-The &amp;ldquo;reason&amp;rdquo; In my mother tongue there are two different words for &amp;ldquo;reason&amp;rdquo; with significant differences in their meaning. The first one &amp;ldquo;причина&amp;rdquo;, is used to describe an event or more commonly, a series of events which lead to what usually turns out to be a bad situation. The other one &amp;ldquo;повод&amp;rdquo;, describes the very last event, the final straw which lead to the event.</description>
+      <description>&lt;p&gt;After years of using Vim as my primary editing tool&amp;hellip;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Prompt working directory</title>
       <link>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</link>
-      <pubDate>Sun, 26 Jan 2014 00:00:00 +0200</pubDate>
-      
+      <pubDate>Sun, 26 Jan 2014 00:00:00 +0000</pubDate>
       <guid>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
-      <description>TL;DR Shorten ~/very/deep/down/the/rabbit/hole to ⋯/the/rabbit/hole in prompt.
-If you&amp;rsquo;re staring at a shell prompt a few hours every day, you might as well try to modify the prompt to better suit your needs. Some people like a minimalistic prompt with nothing but the working dir and a dollar sign ~ $. Others get an enormous 256-color multi-line beast holding information about the kernel version, battery status, daily horoscope and what not.</description>
+      <description>&lt;p&gt;Shorten &lt;code&gt;~/very/deep/down/the/rabbit/hole&lt;/code&gt; to &lt;code&gt;⋯/the/rabbit/hole&lt;/code&gt; in&#xA;prompt.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
