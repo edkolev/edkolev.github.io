@@ -32,6 +32,8 @@ Working in an all-remote company has always been an interesting
 thought exercise to me. Would it work for me? Would it work for the
 company? At what cost?
 
+#+hugo: more
+
 *** Pluses
 
 Let's settle on the positives first, starting with the big one: one
@@ -100,6 +102,8 @@ of your own couch!
 
 This post is intended to present a minimal example of setting up emacs
 with evil as well as a few evil plugins.
+
+#+hugo: more
 
 The emacs ecosystem is constantly changing, and evil and its plugins,
 being part of that ecosystem, are changing as well. Hence, the snippet
@@ -211,7 +215,7 @@ Care is taken to ensure the evil packages are lazy-loaded.
 # Local Variables:
 # eval: (add-hook 'after-save-hook #'org-hugo-export-wim-to-md-after-save :append :local)
 # End:
-  
+
 ** Make :only ex command reversible                                  :emacs:
 :PROPERTIES:
 :EXPORT_FILE_NAME: reversable-ex-only-command
@@ -223,6 +227,8 @@ The =:only= ex command is one of my most used ones. Here's how it can
 be tweaked so that it doesn't only (pun intended) hide all the other
 windows, but it restores them when re-executed. it You can think of it
 as a zoom/un-zoom command.
+
+#+hugo: more
 
 #+BEGIN_SRC elisp
 (use-package zygospore
@@ -252,6 +258,8 @@ an alias then?
 
 This post will show how to add simple make-based testing support for
 running automated emacs `ert` tests.
+
+#+hugo: more
 
 The following utilities will be available on the development machine:
 
@@ -469,6 +477,10 @@ See also:
 :EXPORT_DESCRIPTION: after so many years with vim.
 :END:
 
+After years of using Vim as my primary editing tool...
+
+#+hugo: more
+
 *** TL;DR
 
 This January I stopped using vim after years of sharpening my vim
@@ -529,6 +541,8 @@ un-see it.
 
 Shorten =~/very/deep/down/the/rabbit/hole= to =⋯/the/rabbit/hole= in
 prompt.
+
+#+hugo: more
 
 If you're staring at a shell prompt a few hours every day, you might as well
 try to modify the prompt to better suit your needs.  Some people like a

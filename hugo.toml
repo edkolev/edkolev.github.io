@@ -2,7 +2,7 @@ baseURL = "http://evgeni.io"
 title = "Personal blog site"
 copyright = ""
 
-theme = "minimo"
+theme = "hugo-theme-console"
 
 disqusShortname = "edkolev"
 googleAnalytics = ""
@@ -96,3 +96,6 @@ url = "/categories/posts/"
 
 [blackfriday]
 hrefTargetBlank = true
+
+[markup.goldmark.renderer]
+unsafe = true
