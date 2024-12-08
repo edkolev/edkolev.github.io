@@ -110,7 +110,7 @@ below will be updated as I see fit.
 
 Care is taken to ensure the evil packages are lazy-loaded.
 
-#+BEGIN_SRC elisp :tangle ~/.emacs.d/init.el
+#+BEGIN_SRC
   ;; load package manager, add the Melpa package registry
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -229,7 +229,7 @@ as a zoom/un-zoom command.
 
 #+hugo: more
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC
 (use-package zygospore
   :ensure t
   :commands zygospore-toggle-delete-other-windows
@@ -244,7 +244,7 @@ I often enter =:On= instead of =:on= which results in a disruption of
 my flow with an unpleasant "Unknown command" message. Why not create
 an alias then?
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC
 (evil-ex-define-cmd "Only" "only")
 #+END_SRC
 
@@ -275,7 +275,7 @@ The Travis build will fail with an error when:
 This will be the resulting directory structure, where `<my-package>.el` is
 the hypothetical package we'd like to test:
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC
 .
 ├── .travis.yml         ;; Travis CI config
 ├── .elpa               ;; contains installed deps
@@ -302,7 +302,7 @@ purpose, thus easy to tweak.
 
 This file is the entry point for Travis CI.
 
-#+BEGIN_SRC yaml
+#+BEGIN_SRC
 # .travis.yml
 sudo: true
 dist: precise
@@ -326,7 +326,7 @@ script:
 
 The Makefile is used for nothing but shortcuts to running the tasks.
 
-#+BEGIN_SRC makefile
+#+BEGIN_SRC
 update:
 	emacs -batch -l test/make-update.el
 
@@ -346,7 +346,7 @@ clean:
 
 Initializes package.el.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC
 (setq package-user-dir
       (expand-file-name (format ".elpa/%s/elpa" emacs-version)))
 (package-initialize)
@@ -357,7 +357,7 @@ Initializes package.el.
 
 This file compiles `*.el` files in the package root directory.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC
 ;;  bail out on compilation warnings and errors
 (setq byte-compile-error-on-warn t)
 (setq byte-compile--use-old-handlers nil)
@@ -373,7 +373,7 @@ This file compiles `*.el` files in the package root directory.
 
 This file runs the tests in `tests/tests.el`.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC
 (let* ((project-tests-file "tests.el")
        (current-directory (file-name-directory load-file-name))
        (project-test-path (expand-file-name "." current-directory))
@@ -398,7 +398,7 @@ The `dev-packages` variable should be modified per the package's
 needs. This example adds the `evil` and `evil-test-helpers` packages
 as dependencies for illustrative purpose.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC
 ;; list of the all the dependencies, including the dev dependencies
 (defvar dev-packages '(evil evil-test-helpers))
 
@@ -435,7 +435,7 @@ This file contains the unit tests for `my-package`, the package being
 tested. This example tests a hypothetical function
 `my-package-add-numers`.
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC
 (require 'ert)
 (require 'my-package)
 
@@ -446,7 +446,7 @@ tested. This example tests a hypothetical function
 
 *** .gitignore (optional)
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC
 .elpa/
 *.elc
 #+END_SRC
@@ -563,7 +563,7 @@ dir is a sub dir of $HOME or not.
 
 Working dir is a subdir of $HOME:
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC
 ~ $ PROMPT_DIRTRIM=3
 ~ $ cd one/
 ~/one $ cd two/
@@ -581,7 +581,7 @@ This is useless to me:
 
 Working dir is not a subdir of $HOME:
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC
 ~ $ PROMPT_DIRTRIM=3
 / $ cd one/
 /one $ cd two/
@@ -627,7 +627,7 @@ coffee, I managed to achieve the desired result:
 
 In a subdir of $HOME:
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC
 ~ $ cd one/
 ~/one $ cd two/
 ~/one/two $ cd three/
@@ -637,7 +637,7 @@ In a subdir of $HOME:
 
 Not in $HOME:
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC
 / $ cd one/
 /one $ cd two/
 /one/two $ cd three/
@@ -647,7 +647,7 @@ Not in $HOME:
 
 As a bonus, the separator can be configured, for example it could be = > =
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC
 ~ $ cd one/
 ~ > one $ cd two/
 ~ > one > two $ cd three/
@@ -665,7 +665,7 @@ symbols for my [promptline.vim][1] plugin:
 Hopefully it would be useful to someone else. I certainly learned a lot writing
 (and re-writing) it. Enjoy!
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC
 function truncated_cwd {
   # dir_limit and truncation can be configured
   local dir_limit="3"
@@ -703,7 +703,7 @@ function truncated_cwd {
 There are a few ways to get the function in the prompt, this is probably the
 simplest one: 
 
-#+BEGIN_SRC bash
+#+BEGIN_SRC
 PS1='$(truncated_cwd) \$ '
 #+END_SRC
 
