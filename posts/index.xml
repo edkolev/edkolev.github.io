@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Personal blog</title>
-    <link>http://evgeni.io/posts/</link>
+    <link>https://evgeni.io/posts/</link>
     <description>Recent content in Posts on Personal blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://evgeni.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://evgeni.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Thoughts on all-remote</title>
-      <link>http://evgeni.io/posts/thoughts-on-all-remote-companies/</link>
+      <link>https://evgeni.io/posts/thoughts-on-all-remote-companies/</link>
       <pubDate>Mon, 10 Dec 2018 00:00:00 +0000</pubDate>
-      <guid>http://evgeni.io/posts/thoughts-on-all-remote-companies/</guid>
+      <guid>https://evgeni.io/posts/thoughts-on-all-remote-companies/</guid>
       <description>&lt;p&gt;Working in an all-remote company has always been an interesting&#xA;thought exercise to me. Would it work for me? Would it work for the&#xA;company? At what cost?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Quick Start emacs with evil</title>
-      <link>http://evgeni.io/posts/quick-start-evil-mode/</link>
+      <link>https://evgeni.io/posts/quick-start-evil-mode/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://evgeni.io/posts/quick-start-evil-mode/</guid>
+      <guid>https://evgeni.io/posts/quick-start-evil-mode/</guid>
       <description>&lt;p&gt;This post is intended to present a minimal example of setting up emacs&#xA;with evil as well as a few evil plugins.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Make :only ex command reversible</title>
-      <link>http://evgeni.io/posts/reversable-ex-only-command/</link>
+      <link>https://evgeni.io/posts/reversable-ex-only-command/</link>
       <pubDate>Fri, 22 Sep 2017 00:00:00 +0000</pubDate>
-      <guid>http://evgeni.io/posts/reversable-ex-only-command/</guid>
+      <guid>https://evgeni.io/posts/reversable-ex-only-command/</guid>
       <description>&lt;p&gt;The &lt;code&gt;:only&lt;/code&gt; ex command is one of my most used ones. Here&amp;rsquo;s how it can&#xA;be tweaked so that it doesn&amp;rsquo;t only (pun intended) hide all the other&#xA;windows, but it restores them when re-executed. it You can think of it&#xA;as a zoom/un-zoom command.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Travis CI integration for emacs packages</title>
-      <link>http://evgeni.io/posts/travis-for-emacs-packages/</link>
+      <link>https://evgeni.io/posts/travis-for-emacs-packages/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
-      <guid>http://evgeni.io/posts/travis-for-emacs-packages/</guid>
+      <guid>https://evgeni.io/posts/travis-for-emacs-packages/</guid>
       <description>&lt;p&gt;This post will show how to add simple make-based testing support for&#xA;running automated emacs `ert` tests.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why I switched to Emacs</title>
-      <link>http://evgeni.io/posts/why-i-switched-to-emacs/</link>
+      <link>https://evgeni.io/posts/why-i-switched-to-emacs/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
-      <guid>http://evgeni.io/posts/why-i-switched-to-emacs/</guid>
+      <guid>https://evgeni.io/posts/why-i-switched-to-emacs/</guid>
       <description>&lt;p&gt;After years of using Vim as my primary editing tool&amp;hellip;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Prompt working directory</title>
-      <link>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</link>
+      <link>https://evgeni.io/posts/2014-01-26-bash-directory-truncation/</link>
       <pubDate>Sun, 26 Jan 2014 00:00:00 +0000</pubDate>
-      <guid>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
+      <guid>https://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
       <description>&lt;p&gt;Shorten &lt;code&gt;~/very/deep/down/the/rabbit/hole&lt;/code&gt; to &lt;code&gt;⋯/the/rabbit/hole&lt;/code&gt; in&#xA;prompt.&lt;/p&gt;</description>
     </item>
   </channel>

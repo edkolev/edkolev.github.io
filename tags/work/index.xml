@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Work on Personal blog</title>
-    <link>http://evgeni.io/tags/work/</link>
+    <link>https://evgeni.io/tags/work/</link>
     <description>Recent content in Work on Personal blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://evgeni.io/tags/work/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://evgeni.io/tags/work/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Thoughts on all-remote</title>
-      <link>http://evgeni.io/posts/thoughts-on-all-remote-companies/</link>
+      <link>https://evgeni.io/posts/thoughts-on-all-remote-companies/</link>
       <pubDate>Mon, 10 Dec 2018 00:00:00 +0000</pubDate>
-      <guid>http://evgeni.io/posts/thoughts-on-all-remote-companies/</guid>
+      <guid>https://evgeni.io/posts/thoughts-on-all-remote-companies/</guid>
       <description>&lt;p&gt;Working in an all-remote company has always been an interesting&#xA;thought exercise to me. Would it work for me? Would it work for the&#xA;company? At what cost?&lt;/p&gt;</description>
     </item>
   </channel>

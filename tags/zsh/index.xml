@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zsh on Personal blog</title>
-    <link>http://evgeni.io/tags/zsh/</link>
+    <link>https://evgeni.io/tags/zsh/</link>
     <description>Recent content in Zsh on Personal blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 Jan 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://evgeni.io/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://evgeni.io/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Prompt working directory</title>
-      <link>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</link>
+      <link>https://evgeni.io/posts/2014-01-26-bash-directory-truncation/</link>
       <pubDate>Sun, 26 Jan 2014 00:00:00 +0000</pubDate>
-      <guid>http://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
+      <guid>https://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
       <description>&lt;p&gt;Shorten &lt;code&gt;~/very/deep/down/the/rabbit/hole&lt;/code&gt; to &lt;code&gt;⋯/the/rabbit/hole&lt;/code&gt; in&#xA;prompt.&lt;/p&gt;</description>
     </item>
   </channel>
