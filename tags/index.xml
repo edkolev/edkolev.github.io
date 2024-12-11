@@ -6,20 +6,20 @@
     <description>Recent content in Tags on Personal blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://evgeni.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Emacs</title>
+      <link>https://evgeni.io/tags/emacs/</link>
+      <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://evgeni.io/tags/emacs/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Work</title>
       <link>https://evgeni.io/tags/work/</link>
       <pubDate>Mon, 10 Dec 2018 00:00:00 +0000</pubDate>
       <guid>https://evgeni.io/tags/work/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Emacs</title>
-      <link>https://evgeni.io/tags/emacs/</link>
-      <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>https://evgeni.io/tags/emacs/</guid>
       <description></description>
     </item>
     <item>

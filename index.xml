@@ -6,7 +6,7 @@
     <description>Recent content on Personal blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://evgeni.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
@@ -14,6 +14,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://evgeni.io/about/</guid>
       <description>&lt;p&gt;My name is Evgeni, this is my personal blog where I write about&#xA;whatever I’m interesed in at the time of writing.&lt;/p&gt;&#xA;&lt;p&gt;Content on this blog is reusabe under CC BY-SA 4.0&lt;/p&gt;&#xA;&lt;p&gt;The source of this site is on &lt;a href=&#34;https://github.com/edkolev/edkolev.github.io/tree/source&#34;&gt;github&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why I&#39;m still using Emacs</title>
+      <link>https://evgeni.io/posts/why-im-still-using-emacs/</link>
+      <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://evgeni.io/posts/why-im-still-using-emacs/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been using Emacs for 8 years as of now, and Vim for 4-5 before&#xA;that. Everybody I&amp;rsquo;ve ever worked with knows very well &lt;strong&gt;what&lt;/strong&gt; I use&amp;hellip;&#xA;but not necessarily &lt;strong&gt;why&lt;/strong&gt; I use it. So why?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Thoughts on all-remote</title>

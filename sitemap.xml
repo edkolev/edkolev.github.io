@@ -10,6 +10,13 @@
     
         
         <url>
+            <loc>https://evgeni.io/posts/why-im-still-using-emacs/</loc>
+            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
             <loc>https://evgeni.io/posts/thoughts-on-all-remote-companies/</loc>
             <lastmod>2018-12-10T00:00:00+00:00</lastmod>
         </url>
@@ -53,35 +60,42 @@
         
         <url>
             <loc>https://evgeni.io/categories/</loc>
-            <lastmod>2018-12-10T00:00:00+00:00</lastmod>
+            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://evgeni.io/tags/emacs/</loc>
+            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/</loc>
-            <lastmod>2018-12-10T00:00:00+00:00</lastmod>
+            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/posts/</loc>
-            <lastmod>2018-12-10T00:00:00+00:00</lastmod>
+            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/categories/posts/</loc>
-            <lastmod>2018-12-10T00:00:00+00:00</lastmod>
+            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/tags/</loc>
-            <lastmod>2018-12-10T00:00:00+00:00</lastmod>
+            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
         </url>
         
     
@@ -89,13 +103,6 @@
         <url>
             <loc>https://evgeni.io/tags/work/</loc>
             <lastmod>2018-12-10T00:00:00+00:00</lastmod>
-        </url>
-        
-    
-        
-        <url>
-            <loc>https://evgeni.io/tags/emacs/</loc>
-            <lastmod>2018-01-13T00:00:00+00:00</lastmod>
         </url>
         
     
