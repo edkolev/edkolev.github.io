@@ -21,6 +21,106 @@ The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tre
 
 * Posts                                                              :@posts:
 
+** Why I'm still using Emacs                                         :emacs:
+:PROPERTIES:
+:EXPORT_FILE_NAME: why-im-still-using-emacs
+:EXPORT_DATE: 2024-12-07
+:END:
+
+I've been using Emacs for 8 years as of now, and Vim for 4-5 before
+that. Everybody I've ever worked with knows very well *what* I use...
+but not necessarily *why* I use it. So why?
+
+#+hugo: more
+
+This post will try to answer this question that I so often get - why
+Emacs? The question makes sense - there are so many options, so many
+IDEs available. Some of them are pretty much the norm, like VS Code
+and JetBrains.
+
+*** But it's not just Emacs
+
+Actually I use both Emacs and Vim... and a bunch of other tools in
+day-to-day coding. For example tmux, bash, git, ripgrep. Arguably,
+every tool is an integral part of my workflow, it doesn't make sense
+to look at individual tools, instead, everything together is what
+makes my software development experience what it is.
+
+Still, let's focus on the big question - why Emacs?
+
+This post will try to provide an objective analysis of the pros and
+cons, hoping to be as objective as possible. However, with me being
+me, and my biases being my biases, it's unlikely I'll be able to
+really do an objective analysis... But here it goes anyway.
+
+*** TL;DR;
+
+I like it. I like so many aspects of using Emacs - from day-to-day
+writing in it, to periodically checking what new features have been
+implemented in the core, and the ecosystem. I enjoy org-mode (I'm
+writing this post in org-mode), evil, Elisp, magit to name a few. But
+even more I'm impressed with the life of the *project* - In March 2025
+*the project will turn 40... years!*
+
+*** Pros
+
+- Learning a Lisp dialect, Elisp, has been a great experience for me.
+  I enjoy learning programming languages, I enjoy learning in general.
+  Since Lisps are so different from my day-to-day programming
+  languages, it was a mind-bending experience.
+
+- Personalised workflow. I know what I want from my development
+  environment, and I can achieve it with Emacs. The level of
+  personalisation is amazing, so many things can be customized. An
+  example: I like modal editing, so I use [[https://github.com/emacs-evil/evil][evil]]. I use RET (enter key)
+  to save the file - this is probably the most often used key for me.
+
+- Open source, and warm community. I've contributed [[https://git.savannah.gnu.org/cgit/emacs.git/log/?qt=author&q=evgeni+kolev][multiple times]] to
+  Emacs. I don't consider myself a strong Elisp programmer, however,
+  the community has been so responsive, so welcoming, I've practically
+  been guided multiples times to make my contributions.
+
+*** Cons
+
+The Cons here not really Cons for my. I'm listing them because from my
+discussions with fellow engineers, these are generally seen as
+negatives. For example, I enjoy doing research on how [[https://microsoft.github.io/language-server-protocol/][LSP]] / [[https://microsoft.github.io/debug-adapter-protocol/][DAP]] work.
+However, I acknowledge most people prefer having an IDE which just
+works, without exposing under-the-hood details like LSP or DAP.
+
+- Requires maintenance. My Emacs configuration is quite big (a few
+  thousand lines), so as the ecosystem evolves, I occasionally do some
+  housekeeping to keep it up-to-date, and make sure I'm taking
+  advantage of latest features (e.g. native compilation).
+
+- Requires research. Like mentioned above, LSP or DAP is a good
+  example. Also, Emacs has different packages for both LSP (e.g. [[https://github.com/joaotavora/eglot][eglot]]
+  VS [[https://github.com/emacs-lsp/lsp-mode][lsp-mode]]) and DAP (e.g. [[https://github.com/svaante/dape][dape]] VS [[https://github.com/emacs-lsp/dap-mode][dap-mode]]), just picking one of
+  these requires some work.
+
+- Requires in-depth knowledge. Things *will* break. For example Go's
+  [[https://github.com/golang/tools/blob/master/gopls/README.md][gopls]] might be upgraded and stop working as a result, which will
+  require some intervention to fix. The ecosystem is huge, and the
+  ecosystem does not stop evolving. Things break, and someone has to
+  fix them.
+
+*** Conclusion
+
+I never mentioned speed, speed is not a factor for me. I acknowledge my
+speed for certain tasks can be extremely fast, however, some other
+tasks can be much slower. Still, this does not make much of a
+difference from my experience. Coding or reading/exploring code are
+just a small part of the daily work. I believe the limiting factor is
+not the editor/IDE, but the human factor.
+
+I make an analogy with driving a nice car - it's not faster than any
+other modern car, assuming speed limit are obeyed.
+
+Still, driving the nice car is more pleasant, more enjoyable.
+
+This is Emacs for me - pleasant, enjoyable!
+
+
 ** Thoughts on all-remote                                             :work:
 :PROPERTIES:
 :EXPORT_FILE_NAME: thoughts-on-all-remote-companies
