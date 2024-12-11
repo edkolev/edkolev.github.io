@@ -7,7 +7,6 @@ theme = "hugo-theme-console"
 disqusShortname = ""
 googleAnalytics = ""
 
-Paginate = 5
 preserveTaxonomyNames = true
 
 enableRobotsTXT = true
@@ -111,3 +110,10 @@ url = "posts/"
 [[params.navlinks]]
 name = "home/"
 url = "/"
+
+[markup.highlight]
+codeFences = true
+style = "tango"
+
+[pagination]
+pagerSize = 100

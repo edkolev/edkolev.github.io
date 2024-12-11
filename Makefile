@@ -10,7 +10,7 @@ markdown-to-org:
 
 .PHONY: watch
 watch:
-	hugo server --buildDrafts --navigateToChanged
+	hugo server --buildDrafts --navigateToChanged --cleanDestinationDir
 
 .PHONY: clean-markdown
 clean-markdown:
@@ -21,4 +21,4 @@ clean-html:
 	rm -rf public/*
 
 .PHONY: clean
-clean: clean-html clean-markdown
+clean: clean-markdown
