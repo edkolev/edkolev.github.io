@@ -21,6 +21,92 @@ The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tre
 
 * Posts                                                              :@posts:
 
+
+** On AI and writing                            :artificial_intelligence:
+:PROPERTIES:
+:EXPORT_FILE_NAME: on-ai-and-writing
+:EXPORT_DATE: 2024-12-14
+:END:
+
+I'm so *excited* by AI. I'm so *angry* at AI. Oh...
+
+#+hugo: more
+
+*** Artificial intelligence era
+
+AI *will* affect the tech industry.
+
+I'm looking forward to the AI era of software engineering. I expect many changes, mostly the
+way we interact with code. Other than that, my prediction is the bulk of challenges in software
+development, like building the right product, getting feedback from end users, solving actual
+business needs, will not undergo a drastic change. Sure, the name of the role "software
+engineer" might change, the responsibilities might change... but at the end of the day, only a
+small section of the job will change, only the interactions with code.
+
+Note, I'm completely ignoring claims like Poolside's claim that they will build and AI which
+will match end even surpass software engineers. I don't deny this can/will happen, I'm ignoring
+it because I see it as too far in the future.
+
+*** Opportunities
+
+Speed, correctness, safety and more speed!
+
+There are aspects of AI which are of little interest to me, like which AI company got a bigger
+series funding, why was the funding irrational, or why was it visionary.
+
+My current interest with AI lies mostly in:
+- addressing end-user needs
+- developer productivity
+
+I know a company which exposes APIs for remote device management. Taking advantage of this
+would typically mean having their engineers integrate with this API. However, with AI, the
+company was able to just expose a chatbot, which understand plain human commands, like "restart
+the device in this location". Absolutely no engineering effort needed to integrate with the
+API, just use the exposed functionality via the chatbot.
+
+I know a backend engineer who hadn't touched frontend code in years, but recently they "wrote"
+thousands of lines of frontned code in mere days. Done exclusively with an AI-powered IDE. Oh,
+this is so exciting.
+
+I know a non-engineer who needed a plain Android app to show a timer. Using AI, he was able to
+generate code for an app which does exactly this. He did this over a weekend, with *no*
+previous Android coding knowledge. Now, he has a phone in his fitness center, which runs this
+app 24/7.
+
+*** Joy and Fear
+
+I do not feel threatened by this change (revolution?), on the contrary, I feel like the best is
+yet to come - this profession will evolve in interesting, challenging ways... mostly.
+
+There is one part of the job that I *do* feel... afraid.
+
+It's writing. I just love writing, everything about it.
+
+Expressing thoughts, conveying a message, condensing chaotic thoughts into succinct sentences. Not
+really related to coding, more about person-to-person communication. Writing *code* is a small part
+of the job, writing *thoughts* is a huge part.
+
+After so many years (I'm deliberately not keeping count 🙈) in tech, I still enjoy:
+- Starting a blank design document in Google Docs
+- Writing down daily notes in Emacs' Org-mode
+
+My only concern with AI, LLMs in particular, is that writing *thoughts* will become obsolete. I
+mean not completely obsolete, but it will become crippled, irrelevant, and won't be part of my
+daily work.
+
+I don't want that, I want to continue writing...
+
+*** Conclusion
+
+I'm expecting this new era with multiple layers of hope.
+
+Hope that the aspects of the job which are truly enjoyable for me will not be diminished.
+
+Hope that the aspects of the job which are repetitive will become automated to the next level.
+
+Hope that expressing thoughts in written format will not become obsolete.
+
+
 ** Why I'm still using Emacs                                         :emacs:
 :PROPERTIES:
 :EXPORT_FILE_NAME: why-im-still-using-emacs
