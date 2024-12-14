@@ -10,6 +10,13 @@
     
         
         <url>
+            <loc>https://evgeni.io/posts/on-ai-and-writing/</loc>
+            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
             <loc>https://evgeni.io/posts/why-im-still-using-emacs/</loc>
             <lastmod>2024-12-07T00:00:00+00:00</lastmod>
         </url>
@@ -59,42 +66,49 @@
     
         
         <url>
-            <loc>https://evgeni.io/categories/</loc>
-            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
+            <loc>https://evgeni.io/tags/artificial-intelligence/</loc>
+            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
-            <loc>https://evgeni.io/tags/emacs/</loc>
-            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
+            <loc>https://evgeni.io/categories/</loc>
+            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/</loc>
-            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
+            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/posts/</loc>
-            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
+            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/categories/posts/</loc>
-            <lastmod>2024-12-07T00:00:00+00:00</lastmod>
+            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/tags/</loc>
+            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://evgeni.io/tags/emacs/</loc>
             <lastmod>2024-12-07T00:00:00+00:00</lastmod>
         </url>
         
@@ -137,12 +151,6 @@
         
         <url>
             <loc>https://evgeni.io/evgeni-kolev/</loc>
-        </url>
-        
-    
-        
-        <url>
-            <loc>https://evgeni.io/page/</loc>
         </url>
         
     

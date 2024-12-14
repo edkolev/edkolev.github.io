@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Artificial-Intelligence on Personal blog</title>
+    <link>https://evgeni.io/tags/artificial-intelligence/</link>
+    <description>Recent content in Artificial-Intelligence on Personal blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 14 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://evgeni.io/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On AI and writing</title>
+      <link>https://evgeni.io/posts/on-ai-and-writing/</link>
+      <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://evgeni.io/posts/on-ai-and-writing/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m so &lt;strong&gt;excited&lt;/strong&gt; by AI. I&amp;rsquo;m so &lt;strong&gt;angry&lt;/strong&gt; at AI. Oh&amp;hellip;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
