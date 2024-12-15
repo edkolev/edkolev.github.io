@@ -15,5 +15,12 @@
       <guid>https://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
       <description>&lt;p&gt;Shorten &lt;code&gt;~/very/deep/down/the/rabbit/hole&lt;/code&gt; to &lt;code&gt;⋯/the/rabbit/hole&lt;/code&gt; in&#xA;prompt.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Prompt working directory</title>
+      <link>https://evgeni.io/posts/bash-directory-truncation/</link>
+      <pubDate>Sun, 26 Jan 2014 00:00:00 +0000</pubDate>
+      <guid>https://evgeni.io/posts/bash-directory-truncation/</guid>
+      <description>&lt;p&gt;Shorten &lt;code&gt;~/very/deep/down/the/rabbit/hole&lt;/code&gt; to &lt;code&gt;⋯/the/rabbit/hole&lt;/code&gt; in&#xA;prompt.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
