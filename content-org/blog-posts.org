@@ -28,7 +28,7 @@ The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tre
 :EXPORT_DATE: 2024-12-14
 :END:
 
-I'm so *excited* by AI. I'm so *angry* at AI. Oh...
+I'm so *excited* by AI. I'm a bit *upset* by AI. Oh...
 
 #+hugo: more
 
@@ -36,7 +36,7 @@ I'm so *excited* by AI. I'm so *angry* at AI. Oh...
 
 AI *will* affect the tech industry.
 
-I'm looking forward to the AI era of software engineering. I expect many changes, mostly the
+I'm looking forward to the AI era of software engineering. I expect many changes, mostly to the
 way we interact with code. Other than that, my prediction is the bulk of challenges in software
 development, like building the right product, getting feedback from end users, solving actual
 business needs, will not undergo a drastic change. Sure, the name of the role "software
@@ -46,6 +46,9 @@ small section of the job will change, only the interactions with code.
 Note, I'm completely ignoring claims like Poolside's claim that they will build and AI which
 will match end even surpass software engineers. I don't deny this can/will happen, I'm ignoring
 it because I see it as too far in the future.
+
+Note2, I'm also ignoring the very likely possibility that demand for software engineers might
+change. Instead, I'm making an assumption demand will not change a lot.
 
 *** Opportunities
 
