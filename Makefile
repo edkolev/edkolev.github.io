@@ -1,4 +1,4 @@
-all: clean-markdown clean-html org-to-markdown watch
+all: watch
 
 .PHONY: org-to-markdown
 org-to-markdown:
