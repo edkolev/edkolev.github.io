@@ -13,9 +13,9 @@
 :END:
 
 My name is Evgeni, this is my personal blog where I write about
-whatever I’m interesed in at the time of writing.
+whatever I’m interested in at the time of writing.
 
-Content on this blog is reusabe under CC BY-SA 4.0
+Content on this blog is reusable under CC BY-SA 4.0
 
 The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tree/source][github]]
 
