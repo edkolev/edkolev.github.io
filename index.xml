@@ -13,7 +13,7 @@
       <link>https://evgeni.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://evgeni.io/about/</guid>
-      <description>&lt;p&gt;My name is Evgeni, this is my personal blog where I write about&#xA;whatever I’m interesed in at the time of writing.&lt;/p&gt;&#xA;&lt;p&gt;Content on this blog is reusabe under CC BY-SA 4.0&lt;/p&gt;&#xA;&lt;p&gt;The source of this site is on &lt;a href=&#34;https://github.com/edkolev/edkolev.github.io/tree/source&#34;&gt;github&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;My name is Evgeni, this is my personal blog where I write about&#xA;whatever I’m interested in at the time of writing.&lt;/p&gt;&#xA;&lt;p&gt;Content on this blog is reusable under CC BY-SA 4.0&lt;/p&gt;&#xA;&lt;p&gt;The source of this site is on &lt;a href=&#34;https://github.com/edkolev/edkolev.github.io/tree/source&#34;&gt;github&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>On AI and writing</title>
@@ -21,6 +21,13 @@
       <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://evgeni.io/posts/on-ai-and-writing/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m so &lt;strong&gt;excited&lt;/strong&gt; by AI. I&amp;rsquo;m a bit &lt;strong&gt;upset&lt;/strong&gt; by AI. Oh&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Photo 1</title>
+      <link>https://evgeni.io/photos/photo-1/</link>
+      <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://evgeni.io/photos/photo-1/</guid>
+      <description>&lt;p&gt;Photo 1 text&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why I&#39;m still using Emacs</title>
