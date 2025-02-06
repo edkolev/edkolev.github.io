@@ -202,13 +202,12 @@ difference from my experience. Coding or reading/exploring code are
 just a small part of the daily work. I believe the limiting factor is
 not the editor/IDE, but the human factor.
 
-I make an analogy with driving a nice car - it's not faster than any
-other modern car, assuming speed limit are obeyed.
+I make an analogy with driving a nice car - a nice car is not faster than
+any other modern car, assuming speed limit are obeyed.
 
 Still, driving the nice car is more pleasant, more enjoyable.
 
 This is Emacs for me - pleasant, enjoyable!
-
 
 ** Thoughts on all-remote                                             :work:
 :PROPERTIES:
