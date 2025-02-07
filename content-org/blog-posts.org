@@ -44,7 +44,7 @@ engineer" might change, the responsibilities might change... but at the end of t
 small section of the job will change, only the interactions with code.
 
 Note, I'm completely ignoring claims like Poolside's claim that they will build and AI which
-will match end even surpass software engineers. I don't deny this can/will happen, I'm ignoring
+will match and even surpass software engineers. I don't deny this can/will happen, I'm ignoring
 it because I see it as too far in the future.
 
 Note2, I'm also ignoring the very likely possibility that demand for software engineers might
