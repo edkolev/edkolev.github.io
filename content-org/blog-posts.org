@@ -116,7 +116,7 @@ Hope that expressing thoughts in written format will not become obsolete.
 :EXPORT_DATE: 2024-12-07
 :END:
 
-I've been using Emacs for 8 years as of now, and Vim for 4-5 before
+I've [[*Why I switched to Emacs][been using Emacs]] for 8 years as of now, and Vim for 4-5 before
 that. Everybody I've ever worked with knows very well *what* I use...
 but not necessarily *why* I use it. So why?
 
