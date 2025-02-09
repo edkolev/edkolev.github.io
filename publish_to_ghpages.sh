@@ -21,18 +21,22 @@ git worktree add -B master public origin/master
 git -C public pull
 
 echo "Removing existing files"
-rm -rf public/*
+make clean-html
+make clean-markdown
 
 echo "Generating site"
-hugo
+make org-to-markdown
+make markdown-to-html
 echo 'evgeni.io' > public/CNAME
 
 echo "Updating master branch"
-cd public
-git add --all
-git commit -m "Publishing `date`"
+(
+    cd public
+    git add --all
+    git commit -m "Publishing `date`"
 
-echo "Pushing master branch"
-git push origin master
+    echo "Pushing master branch"
+    git push origin master
 
-echo "Done."
+    echo "Done."
+)
