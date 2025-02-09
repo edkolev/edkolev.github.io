@@ -10,6 +10,13 @@
     
         
         <url>
+            <loc>https://evgeni.io/posts/my-indispensible-lifehacks/</loc>
+            <lastmod>2025-02-07T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
             <loc>https://evgeni.io/posts/on-ai-and-writing/</loc>
             <lastmod>2024-12-14T00:00:00+00:00</lastmod>
         </url>
@@ -66,6 +73,20 @@
     
         
         <url>
+            <loc>https://evgeni.io/categories/</loc>
+            <lastmod>2025-02-07T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://evgeni.io/tags/life/</loc>
+            <lastmod>2025-02-07T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
             <loc>https://evgeni.io/</loc>
             <lastmod>2025-02-07T00:00:00+00:00</lastmod>
         </url>
@@ -80,28 +101,21 @@
     
         
         <url>
-            <loc>https://evgeni.io/tags/artificial-intelligence/</loc>
-            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
-        </url>
-        
-    
-        
-        <url>
-            <loc>https://evgeni.io/categories/</loc>
-            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
-        </url>
-        
-    
-        
-        <url>
             <loc>https://evgeni.io/categories/posts/</loc>
-            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+            <lastmod>2025-02-07T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/tags/</loc>
+            <lastmod>2025-02-07T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://evgeni.io/tags/artificial-intelligence/</loc>
             <lastmod>2024-12-14T00:00:00+00:00</lastmod>
         </url>
         
