@@ -40,7 +40,7 @@ In sub-heading.
 ** My indispensable lifehack                                          :life:
 :PROPERTIES:
 :EXPORT_FILE_NAME: my-indispensible-lifehack
-:EXPORT_DATE: 2025-02-07
+:EXPORT_DATE: 2025-02-09
 :END:
 
 This is a reflection of the practices I strive to follow in order to have a higher quality of
