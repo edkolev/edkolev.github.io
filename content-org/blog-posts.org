@@ -37,6 +37,141 @@ Rest of post.
 
 In sub-heading.
 
+** My indispensable lifehack                                          :life:
+:PROPERTIES:
+:EXPORT_FILE_NAME: my-indispensible-lifehack
+:EXPORT_DATE: 2025-02-07
+:END:
+
+This is a reflection of the practices I strive to follow in order to have a higher quality of
+life, taking into account the multiple fascets of life's challenges. Actually, it's just one
+practice.
+
+#+hugo: more
+
+*** TL;DR;
+
+It's *Physical activity*!
+
+*** Intro
+
+Life is chain of challenges, which we tackle using a series of practices, many of which are
+repetitive:
+- brush teeth
+- post on social media
+- etc.
+
+With this post my aim is to share my Most impactful, ongoing, repetitive practices, which have
+been universally beneficial to *my* life, and to those *around* me. The list is intentionally
+short, as it has been distilled to the most influential practices. I would have gladly included
+more life hacks, if only I had discovered more.
+
+For a practice to make it into this list, it is required to have a broad range of benefits, not
+isolated to any specific challenge. Hence, as much as I want, I will not include [[*Why I'm still using Emacs][Emacs]], even
+though it has had an immense impact on how I spend time in front of a computer (both work and
+leisure).
+
+With those restrictions, the list is actually a single point - working out. Or more generally:
+*being physically active*.
+
+*** How it started
+
+A few years back, I switched employers and was trying to catch up with my new colleagues, fill
+any missing skills I needed for my new role. At that time it was common to see sheets of paper
+here and there around the office, trying to teach employees useful little tricks to help with
+work. I guess Google's [[https://testing.googleblog.com/2007/01/introducing-testing-on-toilet.html][Testing on the Toilet]] was the inspiration for such publications. Most
+of these publications were about basic engineering practices like unit tests, code reviews. But
+not all...
+
+Surprisingly, one of the leaflets was about *working out*. It stated that employees are
+encouraged to work out, it stated my employer actually wanted me to be physically active. I was
+not expecting that - it stated that physically active employees are more productive than the
+others.
+
+😳 <-- my reaction.
+
+At that time, I was all about increasing my productivity, becoming that 10X developer (which is
+a nice myth by the way... I was young, naive... don't judge). So I did not need a second
+opinion, I started working out!
+
+Now, 5+ years later, I consider this one of the best decisions in my life! To get an idea about
+the magnitude of this statement - I consider my decision to have a family (wife, kids) another
+one!
+
+*** What is Physical Activity
+
+My own definition of being physically active? I consider someone physically active if they
+practice one or more activities which cover:
+
+- Full body - most muscles of the body should be involved
+- Progressive challenge - the activity should be able to scale up with time, i.e. more
+  intensity, density, difficulty, time, etc.
+- Consistency - I'd say 1-5 times per week. Could be more or less, depending on the intensity
+- Skill - the mind should be challenged to learn, and improve
+
+My physical activity of choice has been body-weight workout, but there are many other options,
+to name a few:
+- Football
+- Running
+- Dancing
+- Tennis
+- Gym
+- Knitting
+- Or even better - a combination of a few
+
+Choosing a combination of activities offers unique benefits, for example activities can be
+easily cycled depending on external factors, like the weather. You could play mostly football in
+the warm moths, and occasionally go to the gym. And during the cold months, you could mostly go
+to the gym, and play football if you get the chance.
+
+*** Benefits but also negative consequences
+
+I've noticed a wide range of benefits of practicing a physical activity. Still, I'm sure
+different people would experience different changes. I'm also sure the majority of the
+experiences/changes would be positive - yes, not all would be positive. It's actually very
+likely that you get injured (among other risks), so there are definitely downsides.
+
+However, I'm confident anyone can choose an activity which can provide a wide range of
+benefits, with minimum risk, minimum downsides.
+
+Regarding the benefits, I've noticed many. But note it's just that - *I've noticed* them. The
+benefits are consistent with what I have researched, however, I have not verified them in any
+pseudo scientific way. So take them for what they are - my subjective personal observations,
+that I'm 100% confident in, I do recommend, but can't back up with scientific evidence.
+
+- Discipline
+- Persistence
+- Patience
+- Tracking progress
+- Being fit
+- Increased energy level
+- Health resilience
+- Better mood
+- Energy
+
+It's worth going into details about each on of these, especially for some of the less intuitive
+ones like "discipline". I'll consider a follow-up deep dive post about some of these.
+
+*** Honorable mentions
+
+- Sleep
+- Family
+- Water
+- Nutrition
+- Hobby
+- [[*Why I switched to Emacs][Emacs]]
+- Flexibility
+
+I firmly believe all of the above can result in amazing benefits, and I personally do practice
+many of them in one way or another. However, some do require significant sacrifices, so they
+did not meet the bar for being my Single Most Influential Life Hack, that I can recommend to
+anyone.
+
+*** Conclusion
+
+I would recommend practicing some form of physical activity to everybody - regardless of age,
+profession, schedule. Because I'm 100% convinced of the benefits!
+
 ** On AI and writing                            :artificial_intelligence:
 :PROPERTIES:
 :EXPORT_FILE_NAME: on-ai-and-writing
