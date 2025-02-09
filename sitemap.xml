@@ -10,22 +10,8 @@
     
         
         <url>
-            <loc>https://evgeni.io/photos/</loc>
-            <lastmod>2024-12-12T00:00:00+00:00</lastmod>
-        </url>
-        
-    
-        
-        <url>
             <loc>https://evgeni.io/posts/on-ai-and-writing/</loc>
             <lastmod>2024-12-14T00:00:00+00:00</lastmod>
-        </url>
-        
-    
-        
-        <url>
-            <loc>https://evgeni.io/photos/photo-1/</loc>
-            <lastmod>2024-12-12T00:00:00+00:00</lastmod>
         </url>
         
     
@@ -80,8 +66,15 @@
     
         
         <url>
-            <loc>https://evgeni.io/posts/bash-directory-truncation/</loc>
-            <lastmod>2014-01-26T00:00:00+00:00</lastmod>
+            <loc>https://evgeni.io/</loc>
+            <lastmod>2025-02-07T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://evgeni.io/posts/</loc>
+            <lastmod>2025-02-07T00:00:00+00:00</lastmod>
         </url>
         
     
@@ -95,20 +88,6 @@
         
         <url>
             <loc>https://evgeni.io/categories/</loc>
-            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
-        </url>
-        
-    
-        
-        <url>
-            <loc>https://evgeni.io/</loc>
-            <lastmod>2024-12-14T00:00:00+00:00</lastmod>
-        </url>
-        
-    
-        
-        <url>
-            <loc>https://evgeni.io/posts/</loc>
             <lastmod>2024-12-14T00:00:00+00:00</lastmod>
         </url>
         

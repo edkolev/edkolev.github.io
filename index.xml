@@ -23,18 +23,11 @@
       <description>&lt;p&gt;I&amp;rsquo;m so &lt;strong&gt;excited&lt;/strong&gt; by AI. I&amp;rsquo;m a bit &lt;strong&gt;upset&lt;/strong&gt; by AI. Oh&amp;hellip;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Photo 1</title>
-      <link>https://evgeni.io/photos/photo-1/</link>
-      <pubDate>Thu, 12 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>https://evgeni.io/photos/photo-1/</guid>
-      <description>&lt;p&gt;Photo 1 text&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Why I&#39;m still using Emacs</title>
       <link>https://evgeni.io/posts/why-im-still-using-emacs/</link>
       <pubDate>Sat, 07 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://evgeni.io/posts/why-im-still-using-emacs/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve been using Emacs for 8 years as of now, and Vim for 4-5 before&#xA;that. Everybody I&amp;rsquo;ve ever worked with knows very well &lt;strong&gt;what&lt;/strong&gt; I use&amp;hellip;&#xA;but not necessarily &lt;strong&gt;why&lt;/strong&gt; I use it. So why?&lt;/p&gt;</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve &lt;a href=&#34;https://evgeni.io/posts/why-i-switched-to-emacs/&#34;&gt;been using Emacsxx&lt;/a&gt; for 8 years as of now, and Vim for 4-5 before&#xA;that. Everybody I&amp;rsquo;ve ever worked with knows very well &lt;strong&gt;what&lt;/strong&gt; I use&amp;hellip;&#xA;but not necessarily &lt;strong&gt;why&lt;/strong&gt; I use it. So why?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Thoughts on all-remote</title>
@@ -76,13 +69,6 @@
       <link>https://evgeni.io/posts/2014-01-26-bash-directory-truncation/</link>
       <pubDate>Sun, 26 Jan 2014 00:00:00 +0000</pubDate>
       <guid>https://evgeni.io/posts/2014-01-26-bash-directory-truncation/</guid>
-      <description>&lt;p&gt;Shorten &lt;code&gt;~/very/deep/down/the/rabbit/hole&lt;/code&gt; to &lt;code&gt;⋯/the/rabbit/hole&lt;/code&gt; in&#xA;prompt.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Prompt working directory</title>
-      <link>https://evgeni.io/posts/bash-directory-truncation/</link>
-      <pubDate>Sun, 26 Jan 2014 00:00:00 +0000</pubDate>
-      <guid>https://evgeni.io/posts/bash-directory-truncation/</guid>
       <description>&lt;p&gt;Shorten &lt;code&gt;~/very/deep/down/the/rabbit/hole&lt;/code&gt; to &lt;code&gt;⋯/the/rabbit/hole&lt;/code&gt; in&#xA;prompt.&lt;/p&gt;</description>
     </item>
   </channel>
