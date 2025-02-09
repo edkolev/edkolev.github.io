@@ -21,6 +21,21 @@ The source of this site is on [[https://github.com/edkolev/edkolev.github.io/tre
 
 * Posts                                                              :@posts:
 
+** TODO Post Template                                                  :tag:
+:PROPERTIES:
+:EXPORT_FILE_NAME: post-template
+:EXPORT_DATE: 1970-01-01
+:END:
+
+Post heading here.
+
+#+hugo: more
+
+Rest of post.
+
+*** Sub-heading
+
+In sub-heading.
 
 ** On AI and writing                            :artificial_intelligence:
 :PROPERTIES:
