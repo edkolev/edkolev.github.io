@@ -1,3 +1,5 @@
+-*- eval: (auto-fill-mode) -*-
+
 #+hugo_base_dir: ../
 #+hugo_section: posts
 
@@ -37,6 +39,95 @@ Rest of post.
 
 In sub-heading.
 
+** Kubernetes + my blog = ♥                                   :kubernetes:
+:PROPERTIES:
+:EXPORT_FILE_NAME: run-my-blog-with-kubernetes
+:EXPORT_DATE: 2025-02-19
+:END:
+
+I decided to explore how simple it would be run my blog on Kubernetes. Oh, I was not prepared
+for the simplicity of the resulting findings!
+
+#+hugo: more
+
+This blog is a pretty simple. Yes, it involves sophisticated tools like [[https://gohugo.io/][hugo]] and [[https://pages.github.com/][github pages]],
+but /running/ the site is nothing but serving static files. So I was expecting a
+straightforward setup with Kubernetes.
+
+*** TL;DR:
+
+Surprisingly, the most cumbersome task was signing up for a particular cloud provider! Once I
+had that done, the rest was a breeze!
+
+*** Cloud providers
+
+Unexpectedly, these were such a hassle. All I needed:
+- managed Kubernetes cluster
+- access with "kubectl" CLI
+
+**** Google's GKE
+
+This was the first one I tried. Google's GKE required a custom CLI (gcloud) to be installed on
+my laptop. Not a big deal I thought, I decided to install it. However, its installation
+instructions required running a custom python installer script, including a specific python
+interpreter version. This was a deal breaker for me - I neither wanted yet another python
+version on my machine, nor wanted to waste time inspecting and running a installer script.
+
+So I dropped this cloud provider.
+
+**** Amazon's EKS
+
+After my failed attempt with GKE, I decided to completely skip this one - AWS is not known for
+its simplicity. I've also used this one before, so I wasn't excited about trying it out for
+this particular experiment. Off to the next one!
+
+**** Linode (Akamai)
+
+This was the most disappointing of all, as I was not even able to try it out. The signup
+process just auto-rejected me. I was using a valid Credit Card (tried different ones), but I
+was still getting rejected. With some googling, I found this is actually a common scenario if
+you try to create a personal account (as opposed to a company account).
+
+I tried a couple of times, also wrote an email to their support... but I didn't hear back for
+days. Eventually their support team did reply and actually approved my account, but it was too
+little, too late - I had already moved on to another provider.
+
+**** Digital Ocean's DOKS
+
+This managed Kubernetes was exactly what I was looking for - simple signup process, good
+documentation, no complicated authentication for "kubectl". After a few minutes with their
+signup process, I was ready to jump in!
+
+*** Running the site
+
+OMG, the simplicity of K8s is incredible. Everything is centered around resources like
+ReplicaSet, Deployment, Pod, and manipulating them is done in a CRUDE style, very intiutive,
+very simple to manage with plain-text configuration files.
+
+I first prepared a local working setup based on minikube, which turned out to be
+straightforward:
+- one Nginx container to serve the static website
+- one [[https://github.com/kubernetes/git-sync][git-sync]] container to refresh the website when I publish new posts
+
+These two wrapped in a Pod, which was in turned wrapped in a Deployment, and that was pretty
+much it!
+
+A step I intentionally skipped was setting up Ingress I wanted to avoid accidentally incurring
+any unwanted costs by exposing the site to the public web.
+
+Once I had the working local setup, I re-executed the commands against the cloud provider's
+(DOKS) managed Kubernetes. I ran the exact same 2-3 commands that I had executed on minikube
+and I was done.
+
+As a follow-up I'm considering adding a [[https://helm.sh/][Helm]] chart - would be a nice learning opportunity.
+
+*** Conclusion
+
+I took this opportunity to explore Kubernetes and gain some intuition about the benefits it
+provides. I had high expectations, and can confidently say they were all met - ease of use,
+quality of documentation, features were all just great!
+
+
 ** My indispensable lifehack                                          :life:
 :PROPERTIES:
 :EXPORT_FILE_NAME: my-indispensible-lifehack
@@ -68,7 +159,7 @@ short, as it has been distilled to the most influential practices. I would have 
 more life hacks, if only I had discovered more.
 
 For a practice to make it into this list, it is required to have a broad range of benefits, not
-isolated to any specific challenge. Hence, as much as I want, I will not include [[*Why I'm still using Emacs][Emacs]], even
+isolated to any specific challenge. Hence, as much as I want, I will not include Emacs, even
 though it has had an immense impact on how I spend time in front of a computer (both work and
 leisure).
 
@@ -160,7 +251,7 @@ ones like "discipline". I'll consider a follow-up deep dive post about some of t
 - Water
 - Nutrition
 - Hobby
-- [[*Why I switched to Emacs][Emacs]]
+- Emacs
 - Flexibility
 
 I firmly believe all of the above can result in amazing benefits, and I personally do practice
