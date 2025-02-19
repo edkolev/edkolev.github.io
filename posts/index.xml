@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Personal blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://evgeni.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes &#43; my blog = ♥</title>
+      <link>https://evgeni.io/posts/run-my-blog-with-kubernetes/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://evgeni.io/posts/run-my-blog-with-kubernetes/</guid>
+      <description>&lt;p&gt;I decided to explore how simple it would be run my blog on Kubernetes. Oh, I was not prepared&#xA;for the simplicity of the resulting findings!&lt;/p&gt;</description>
+    </item>
     <item>
       <title>My indispensable lifehack</title>
       <link>https://evgeni.io/posts/my-indispensible-lifehack/</link>

@@ -10,6 +10,13 @@
     
         
         <url>
+            <loc>https://evgeni.io/posts/run-my-blog-with-kubernetes/</loc>
+            <lastmod>2025-02-19T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
             <loc>https://evgeni.io/posts/my-indispensible-lifehack/</loc>
             <lastmod>2025-02-09T00:00:00+00:00</lastmod>
         </url>
@@ -74,41 +81,48 @@
         
         <url>
             <loc>https://evgeni.io/categories/</loc>
-            <lastmod>2025-02-09T00:00:00+00:00</lastmod>
+            <lastmod>2025-02-19T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
-            <loc>https://evgeni.io/tags/life/</loc>
-            <lastmod>2025-02-09T00:00:00+00:00</lastmod>
+            <loc>https://evgeni.io/tags/kubernetes/</loc>
+            <lastmod>2025-02-19T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/</loc>
-            <lastmod>2025-02-09T00:00:00+00:00</lastmod>
+            <lastmod>2025-02-19T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/posts/</loc>
-            <lastmod>2025-02-09T00:00:00+00:00</lastmod>
+            <lastmod>2025-02-19T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/categories/posts/</loc>
-            <lastmod>2025-02-09T00:00:00+00:00</lastmod>
+            <lastmod>2025-02-19T00:00:00+00:00</lastmod>
         </url>
         
     
         
         <url>
             <loc>https://evgeni.io/tags/</loc>
+            <lastmod>2025-02-19T00:00:00+00:00</lastmod>
+        </url>
+        
+    
+        
+        <url>
+            <loc>https://evgeni.io/tags/life/</loc>
             <lastmod>2025-02-09T00:00:00+00:00</lastmod>
         </url>
         

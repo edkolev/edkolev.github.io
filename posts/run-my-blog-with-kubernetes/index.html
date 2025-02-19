@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Personal blog/posts/run-my-blog-with-kubernetes/</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <link rel="stylesheet" href="https://evgeni.io/hugo-theme-console/css/terminal-0.7.4.min.css">
+    <link rel="stylesheet" href="https://evgeni.io/hugo-theme-console/css/animate-4.1.1.min.css">
+    <link rel="stylesheet" href="https://evgeni.io/hugo-theme-console/css/console.css">
+    
+      <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+       <meta property="og:title" content="Kubernetes &#43; my blog = ♥" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://evgeni.io/posts/run-my-blog-with-kubernetes/" /><meta property="article:published_time" content="2025-02-19T00:00:00+00:00" />
+
+
+
+<meta name="twitter:title" content="Kubernetes &#43; my blog = ♥"/>
+<meta name="twitter:description" content="I decided to explore how simple it would be run my blog on Kubernetes. Oh, I was not prepared
+for the simplicity of the resulting findings!"/>
+
+</head>
+<body class="terminal">
+    <div class="container">
+        <div class="terminal-nav">
+          <header class="terminal-logo">
+            <div class="logo terminal-prompt">
+              
+              
+              <a href="https://evgeni.io/" class="no-style ">Personal blog</a>:~# 
+              <a href='https://evgeni.io/posts'>posts</a>/<a href='https://evgeni.io/posts/run-my-blog-with-kubernetes'>run-my-blog-with-kubernetes</a>/</div></header>
+          <nav class="terminal-menu">
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                <li><a href="https://evgeni.io/about/" typeof="ListItem">about/</a></li>
+                
+                <li><a href="https://evgeni.io/posts/" typeof="ListItem">posts/</a></li>
+                
+                <li><a href="https://evgeni.io/" typeof="ListItem">home/</a></li>
+                
+            </ul>
+          </nav>
+        </div>
+    </div>
+
+    <div class="container " >
+        
+<h1>Kubernetes &#43; my blog = ♥</h1>
+
+Feb. 19, 2025
+
+
+<br/><br/>
+<p>I decided to explore how simple it would be run my blog on Kubernetes. Oh, I was not prepared
+for the simplicity of the resulting findings!</p>
+<p>This blog is a pretty simple. Yes, it involves sophisticated tools like <a href="https://gohugo.io/">hugo</a> and <a href="https://pages.github.com/">github pages</a>,
+but <em>running</em> the site is nothing but serving static files. So I was expecting a
+straightforward setup with Kubernetes.</p>
+<h2 id="tl-dr">TL;DR:</h2>
+<p>Surprisingly, the most cumbersome task was signing up for a particular cloud provider! Once I
+had that done, the rest was a breeze!</p>
+<h2 id="cloud-providers">Cloud providers</h2>
+<p>Unexpectedly, these were such a hassle. All I needed:</p>
+<ul>
+<li>managed Kubernetes cluster</li>
+<li>access with &ldquo;kubectl&rdquo; CLI</li>
+</ul>
+<h3 id="google-s-gke">Google&rsquo;s GKE</h3>
+<p>This was the first one I tried. Google&rsquo;s GKE required a custom CLI (gcloud) to be installed on
+my laptop. Not a big deal I thought, I decided to install it. However, its installation
+instructions required running a custom python installer script, including a specific python
+interpreter version. This was a deal breaker for me - I neither wanted yet another python
+version on my machine, nor wanted to waste time inspecting and running a installer script.</p>
+<p>So I dropped this cloud provider.</p>
+<h3 id="amazon-s-eks">Amazon&rsquo;s EKS</h3>
+<p>After my failed attempt with GKE, I decided to completely skip this one - AWS is not known for
+its simplicity. I&rsquo;ve also used this one before, so I wasn&rsquo;t excited about trying it out for
+this particular experiment. Off to the next one!</p>
+<h3 id="linode--akamai">Linode (Akamai)</h3>
+<p>This was the most disappointing of all, as I was not even able to try it out. The signup
+process just auto-rejected me. I was using a valid Credit Card (tried different ones), but I
+was still getting rejected. With some googling, I found this is actually a common scenario if
+you try to create a personal account (as opposed to a company account).</p>
+<p>I tried a couple of times, also wrote an email to their support&hellip; but I didn&rsquo;t hear back for
+days. Eventually their support team did reply and actually approved my account, but it was too
+little, too late - I had already moved on to another provider.</p>
+<h3 id="digital-ocean-s-doks">Digital Ocean&rsquo;s DOKS</h3>
+<p>This managed Kubernetes was exactly what I was looking for - simple signup process, good
+documentation, no complicated authentication for &ldquo;kubectl&rdquo;. After a few minutes with their
+signup process, I was ready to jump in!</p>
+<h2 id="running-the-site">Running the site</h2>
+<p>OMG, the simplicity of K8s is incredible. Everything is centered around resources like
+ReplicaSet, Deployment, Pod, and manipulating them is done in a CRUDE style, very intiutive,
+very simple to manage with plain-text configuration files.</p>
+<p>I first prepared a local working setup based on minikube, which turned out to be
+straightforward:</p>
+<ul>
+<li>one Nginx container to serve the static website</li>
+<li>one <a href="https://github.com/kubernetes/git-sync">git-sync</a> container to refresh the website when I publish new posts</li>
+</ul>
+<p>These two wrapped in a Pod, which was in turned wrapped in a Deployment, and that was pretty
+much it!</p>
+<p>A step I intentionally skipped was setting up Ingress I wanted to avoid accidentally incurring
+any unwanted costs by exposing the site to the public web.</p>
+<p>Once I had the working local setup, I re-executed the commands against the cloud provider&rsquo;s
+(DOKS) managed Kubernetes. I ran the exact same 2-3 commands that I had executed on minikube
+and I was done.</p>
+<p>As a follow-up I&rsquo;m considering adding a <a href="https://helm.sh/">Helm</a> chart - would be a nice learning opportunity.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I took this opportunity to explore Kubernetes and gain some intuition about the benefits it
+provides. I had high expectations, and can confidently say they were all met - ease of use,
+quality of documentation, features were all just great!</p>
+
+
+        <div class="footer">
+    Powered by <a href="https://gohugo.io/">Hugo</a>
+</div>
+
+    </div>
+  </body>
+</html>

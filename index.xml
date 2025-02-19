@@ -6,7 +6,7 @@
     <description>Recent content on Personal blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://evgeni.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
@@ -14,6 +14,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://evgeni.io/about/</guid>
       <description>&lt;p&gt;My name is Evgeni, this is my personal blog where I write about&#xA;whatever I’m interested in at the time of writing.&lt;/p&gt;&#xA;&lt;p&gt;Content on this blog is reusable under CC BY-SA 4.0&lt;/p&gt;&#xA;&lt;p&gt;The source of this site is on &lt;a href=&#34;https://github.com/edkolev/edkolev.github.io/tree/source&#34;&gt;github&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kubernetes &#43; my blog = ♥</title>
+      <link>https://evgeni.io/posts/run-my-blog-with-kubernetes/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://evgeni.io/posts/run-my-blog-with-kubernetes/</guid>
+      <description>&lt;p&gt;I decided to explore how simple it would be run my blog on Kubernetes. Oh, I was not prepared&#xA;for the simplicity of the resulting findings!&lt;/p&gt;</description>
     </item>
     <item>
       <title>My indispensable lifehack</title>

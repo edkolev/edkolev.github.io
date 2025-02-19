@@ -6,8 +6,15 @@
     <description>Recent content in Tags on Personal blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://evgeni.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes</title>
+      <link>https://evgeni.io/tags/kubernetes/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://evgeni.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Life</title>
       <link>https://evgeni.io/tags/life/</link>
