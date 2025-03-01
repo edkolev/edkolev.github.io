@@ -45,8 +45,8 @@ In sub-heading.
 :EXPORT_DATE: 2025-02-19
 :END:
 
-I decided to explore how simple it would be run my blog on Kubernetes. Oh, I was not prepared
-for the simplicity of the resulting findings!
+I decided to explore how simple it would be to run my blog on Kubernetes. Oh, I was not
+prepared for the simplicity of the resulting findings!
 
 #+hugo: more
 
